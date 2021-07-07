@@ -1,0 +1,5902 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>@kbox/app Global</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">@kbox/app</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-Errors.html">Errors</a></li><li><a href="module-Feature.html">Feature</a></li><li><a href="module-Feature_AppLogger.html">Feature_AppLogger</a></li><li><a href="module-Feature_Bootstrap.html">Feature_Bootstrap</a></li><li><a href="module-Feature_CommandLine.html">Feature_CommandLine</a></li><li><a href="module-Feature_ConfigByGitUser.html">Feature_ConfigByGitUser</a></li><li><a href="module-Feature_ConfigByHostname.html">Feature_ConfigByHostname</a></li><li><a href="module-Feature_CustomConfig.html">Feature_CustomConfig</a></li><li><a href="module-Feature_DataSource.html">Feature_DataSource</a></li><li><a href="module-Feature_Env.html">Feature_Env</a></li><li><a href="module-Feature_FeatureRegistry.html">Feature_FeatureRegistry</a></li><li><a href="module-Feature_HandyDb.html">Feature_HandyDb</a></li><li><a href="module-Feature_Loggers.html">Feature_Loggers</a></li><li><a href="module-Feature_ObjectStore.html">Feature_ObjectStore</a></li><li><a href="module-Feature_Pipeline.html">Feature_Pipeline</a></li><li><a href="module-Feature_PushTable.html">Feature_PushTable</a></li><li><a href="module-Feature_RestClient.html">Feature_RestClient</a></li><li><a href="module-Feature_Settings.html">Feature_Settings</a></li><li><a href="module-Feature_SoapClient.html">Feature_SoapClient</a></li><li><a href="module-Feature_Timezone.html">Feature_Timezone</a></li><li><a href="module-Feature_TypeORM.html">Feature_TypeORM</a></li><li><a href="module-Feature_UseDb.html">Feature_UseDb</a></li><li><a href="module-Feature_Version.html">Feature_Version</a></li><li><a href="module-Helpers.html">Helpers</a></li><li><a href="module-Literal.html">Literal</a></li><li><a href="module-Status.html">Status</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="App.html">App</a></li><li><a href="module-Errors-ApplicationError.html">Errors~ApplicationError</a></li><li><a href="module-Errors-GeneralError.html">Errors~GeneralError</a></li><li><a href="module-Errors-InvalidArgument.html">Errors~InvalidArgument</a></li><li><a href="module-Errors-InvalidConfiguration.html">Errors~InvalidConfiguration</a></li><li><a href="module-Feature_CommandLine-CommandLine.html">Feature_CommandLine~CommandLine</a></li><li><a href="module-Feature_CommandLine-CommandLineArgumentError.html">Feature_CommandLine~CommandLineArgumentError</a></li><li><a href="module-Feature_RestClient-RestClient.html">Feature_RestClient~RestClient</a></li><li><a href="Runable.html">Runable</a></li><li><a href="Runable_.html">Runable(T)</a></li><li><a href="ServiceContainer.html">ServiceContainer</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">Mixins<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-Helpers.withProps.html">Helpers.withProps</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="App.html#event:configLoaded">App#event:configLoaded</a></li><li><a href="App.html#event:ready">App#event:ready</a></li><li><a href="App.html#event:stopping">App#event:stopping</a></li><li><a href="ServiceContainer.html#event:configLoaded">ServiceContainer#event:configLoaded</a></li><li><a href="ServiceContainer.html#event:ready">ServiceContainer#event:ready</a></li><li><a href="ServiceContainer.html#event:stopping">ServiceContainer#event:stopping</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#startLoopWorker">startLoopWorker</a></li><li><a href="global.html#startQueueWorker">startQueueWorker</a></li><li><a href="global.html#startWorker">startWorker</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	<h1 class="page-title">Global</h1>
+<section>
+
+<header>
+    
+        <h2>
+        
+        </h2>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<hr>
+<dt class="name" id="module:Feature">
+    <h4 id="module:Feature"><span class="type-signature">&lt;readonly> </span>module:Feature<span class="type-signature"> :string</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Feature level definitions.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>CONF</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    Configure
+                
+                </td>
+            
+
+            <td class="description last"><p>Configuration</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>INIT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    Initial
+                
+                </td>
+            
+
+            <td class="description last"><p>Initialization, e.g. settings</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SERVICE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    Services
+                
+                </td>
+            
+
+            <td class="description last"><p>Services, e.g. loggers, i18n</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PLUGIN</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    Plugins
+                
+                </td>
+            
+
+            <td class="description last"><p>Loading plugins, e.g. middlewares, bootstrap</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>READY</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    Ready
+                
+                </td>
+            
+
+            <td class="description last"><p>Final preparation before service container get into work</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>validate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Validate a feature object.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		enum/Feature.js
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt class="name" id="module:Literal">
+    <h4 id="module:Literal"><span class="type-signature">&lt;readonly> </span>module:Literal<span class="type-signature"> :string</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Common constant definitions.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>DEFAULT_CONFIG_PATH</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    conf
+                
+                </td>
+            
+
+            <td class="description last"><p>Config files path</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>FEATURES_PATH</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    features
+                
+                </td>
+            
+
+            <td class="description last"><p>Feature files path</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>APP_CFG_NAME</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    app
+                
+                </td>
+            
+
+            <td class="description last"><p>App config file name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>DEFAULT_BOOTSTRAP_PATH</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    bootstrap
+                
+                </td>
+            
+
+            <td class="description last"><p>Default bootrap path</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>DEFAULT_TIMEZONE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    Asia/Shanghai
+                
+                </td>
+            
+
+            <td class="description last"><p>Default timezone</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MODELS_PATH</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    models
+                
+                </td>
+            
+
+            <td class="description last"><p>Models files path, under backend folder</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		enum/Literal.js
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt class="name" id="module:Status">
+    <h4 id="module:Status"><span class="type-signature">&lt;readonly> </span>module:Status<span class="type-signature"> :string</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Status constant definitions.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>MAX_LENGTH_EMAIL_ADDRESS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    320
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MAX_LENGTH_URL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    2083
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SUCCESS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    200
+                
+                </td>
+            
+
+            <td class="description last"><p>错误和失败单独列出</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>FAILURE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_OK</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    200
+                
+                </td>
+            
+
+            <td class="description last"><p>成功</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_CREATED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    201
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_ACCEPTED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    202
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_NON_AUTHORITATIVE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    203
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_NO_CONTENT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    204
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_RESET_CONTENT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    205
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_PARTIAL_CONTENT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    206
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_MULTIPLE_CHOICES</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    300
+                
+                </td>
+            
+
+            <td class="description last"><p>重定向</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_MOVED_PERMANENTLY</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    301
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_FOUND</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    302
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_SEE_OTHER</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    303
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_NOT_MODIFIED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    304
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_USE_PROXY</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    305
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_TEMPORARY_REDIRECT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    307
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_BAD_REQUEST</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    400
+                
+                </td>
+            
+
+            <td class="description last"><p>请求错误</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_UNAUTHORIZED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    401
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_PAYMENT_REQUIRED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    402
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_FORBIDDEN</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    403
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_NOT_FOUND</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    404
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_METHOD_NOT_ALLOWED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    405
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_REQUEST_TIMEOUT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    408
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_INTERNAL_SERVER_ERROR</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"><p>服务器错误</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_NOT_IMPLEMENTED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    501
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_BAD_GATEWAY</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    502
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_SERVICE_UNAVAILABLE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    503
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_GATEWAY_TIMEOUT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    504
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HTTP_VERSION_NOT_SUPPORTED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    505
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>AUTHENTICATED_DENIED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10098
+                
+                </td>
+            
+
+            <td class="description last"><p>禁止登录</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>AUTHENTICATED_FAILED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10099
+                
+                </td>
+            
+
+            <td class="description last"><p>登录失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>UNAUTHENTICATED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10405
+                
+                </td>
+            
+
+            <td class="description last"><p>未登录状态，包括：未授权，未登录和已过期</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>RECORDS_NOT_FOUND</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10406
+                
+                </td>
+            
+
+            <td class="description last"><p>资源找不到，与页面未找到使用共享状态码</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>UNSUPPORTED_MEDIA_TYPE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10407
+                
+                </td>
+            
+
+            <td class="description last"><p>不支持的文件类型，与不支持的媒体类型共享状态码</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>REQUIRED_PARAMS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10520
+                
+                </td>
+            
+
+            <td class="description last"><p>请求必须包含参数</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>BAD_PARAMS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10521
+                
+                </td>
+            
+
+            <td class="description last"><p>请求的参数错误或tv4验证失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PARAMS_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10521
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的参数，与错误参数共享状态码</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>UNSUPPORTED_DATA_TYPE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10522
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的数据类型，特指数据类型错误。</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SENSITIVE_WORDS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10523
+                
+                </td>
+            
+
+            <td class="description last"><p>内容中包含敏感词汇</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>RECORD_REFERRED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10524
+                
+                </td>
+            
+
+            <td class="description last"><p>资源记录已经存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>RATE_LIMITED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10525
+                
+                </td>
+            
+
+            <td class="description last"><p>请求速率收到限制</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PERMISSION_DENIED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10527
+                
+                </td>
+            
+
+            <td class="description last"><p>缺少访问权限。区别于“禁止请求”，这里主要是指后台没有授权</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>BAD_UPDATE_DATA</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10528
+                
+                </td>
+            
+
+            <td class="description last"><p>没有更新的内容</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>BAD_SAVE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10530
+                
+                </td>
+            
+
+            <td class="description last"><p>保存失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>BAD_UPDATE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10531
+                
+                </td>
+            
+
+            <td class="description last"><p>更新失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>BAD_INSERT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10532
+                
+                </td>
+            
+
+            <td class="description last"><p>插入失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>BAD_UPLOAD</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10533
+                
+                </td>
+            
+
+            <td class="description last"><p>上传失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>REMOVE_FAILURE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10534
+                
+                </td>
+            
+
+            <td class="description last"><p>删除失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>IMPORT_FAILURE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10535
+                
+                </td>
+            
+
+            <td class="description last"><p>导入数据解析出错</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>EXPORT_FAILURE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10536
+                
+                </td>
+            
+
+            <td class="description last"><p>导出失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>OUT_OF_MAX_SIZE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10537
+                
+                </td>
+            
+
+            <td class="description last"><p>超出上传总量</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ACCESS_TOKEN_FAILED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10540
+                
+                </td>
+            
+
+            <td class="description last"><p>获取token失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ACCESS_DB_FAILED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10541
+                
+                </td>
+            
+
+            <td class="description last"><p>数据库访问出错</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ACCESS_EXTERNAL_SERVER_FAILED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10542
+                
+                </td>
+            
+
+            <td class="description last"><p>访问外部服务器出错</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>BAD_EXTERNAL_PARAMS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10543
+                
+                </td>
+            
+
+            <td class="description last"><p>请求外部参数错误</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>BAD_EXTERNAL_DATA</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10544
+                
+                </td>
+            
+
+            <td class="description last"><p>解析外部返回数据出错</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>DATA_COLLECTION_NOT_EXIST</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10545
+                
+                </td>
+            
+
+            <td class="description last"><p>数据表不存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>APP_NOT_FOUND</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10550
+                
+                </td>
+            
+
+            <td class="description last"><p>平台不存在该应用</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>XML_PARSE_FAILED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10551
+                
+                </td>
+            
+
+            <td class="description last"><p>xml解析出错</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>EXCEL_PARSE_FAILED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10552
+                
+                </td>
+            
+
+            <td class="description last"><p>excel解析出错或格式不符合要求</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>XLXS_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10552
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CONFIGURE_ERROR</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10553
+                
+                </td>
+            
+
+            <td class="description last"><p>基础配置出错，请联系技术人员</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SERVICE_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10101
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的服务号</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CLIENT_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10102
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的客户端</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SECRET_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10103
+                
+                </td>
+            
+
+            <td class="description last"><p>接入密码错误</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SIGNATURE_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10104
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的签名</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PLATFORM_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10105
+                
+                </td>
+            
+
+            <td class="description last"><p>非法的平台</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SETTING_KEY_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10106
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的配置Key</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>OBJECTID_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10107
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的objectId</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>QUERY_DATA_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10108
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的搜索条件</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>INSERT_DATA_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10109
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的写入条件</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>UPDATE_DATA_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10110
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的更新内容</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>REMOTE_SERVICE_CALL_FAIL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10111
+                
+                </td>
+            
+
+            <td class="description last"><p>远程服务调用失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>TOKEN_CODE_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10201
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的令牌验证码</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>TOKEN_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10202
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的令牌</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>TOKEN_EXPIRED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10203
+                
+                </td>
+            
+
+            <td class="description last"><p>令牌已过期</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>USER_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10204
+                
+                </td>
+            
+
+            <td class="description last"><p>无效用户</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>USER_IS_NULL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10205
+                
+                </td>
+            
+
+            <td class="description last"><p>用户不存在或被删除，或用户不存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>USER_NOT_FOUND</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10205
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>USER_NOT_ENTER</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10206
+                
+                </td>
+            
+
+            <td class="description last"><p>用户不能进入该应用</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>USER_FORBIDDEN</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10207
+                
+                </td>
+            
+
+            <td class="description last"><p>帐号被禁用</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SERVICE_NOT_ACCESS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10208
+                
+                </td>
+            
+
+            <td class="description last"><p>该应用不能访问该接口</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>NOT_ALLOW</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10209
+                
+                </td>
+            
+
+            <td class="description last"><p>权限不足</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>USER_AUTH_FAIL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10210
+                
+                </td>
+            
+
+            <td class="description last"><p>授权失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>AUTH_TYPE_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10211
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的授权类型</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>TOKEN_CODE_EXPIRED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10212
+                
+                </td>
+            
+
+            <td class="description last"><p>令牌验证码过期</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ADMIN_NOT_ENTER</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10213
+                
+                </td>
+            
+
+            <td class="description last"><p>后台用户不能使用该功能</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>USER_EXPIRE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10214
+                
+                </td>
+            
+
+            <td class="description last"><p>您的账号已过期～！</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SEND_CAPTCHA_FAILED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10301
+                
+                </td>
+            
+
+            <td class="description last"><p>发送验证码失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CAPTCHA_TOO_OFTEN</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10302
+                
+                </td>
+            
+
+            <td class="description last"><p>验证码发送太频繁</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CAPTCHA_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10303
+                
+                </td>
+            
+
+            <td class="description last"><p>请输入正确的短信验证码</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CAPTCHA_EXPIRED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10304
+                
+                </td>
+            
+
+            <td class="description last"><p>验证码已失效，请重新获取</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CAPTCHA_EXCEEDED_MAXIMUM</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10305
+                
+                </td>
+            
+
+            <td class="description last"><p>已超过限额，请稍后再试</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SEND_CAPTCHA_TYPE_ERROR</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10306
+                
+                </td>
+            
+
+            <td class="description last"><p>发送验证码类型错误</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CAPTCHA_SERVICE_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10307
+                
+                </td>
+            
+
+            <td class="description last"><p>验证码授权服务号不一致</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CAPTCHA_TYPE_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10308
+                
+                </td>
+            
+
+            <td class="description last"><p>验证码授权用途不一致</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CAPTCHA_NOT_FOUND</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10390
+                
+                </td>
+            
+
+            <td class="description last"><p>用户未获取验证码或者验证码已经过期</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SERVICE_EXIST</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10401
+                
+                </td>
+            
+
+            <td class="description last"><p>服务号已存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CLIENT_EXIST</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10402
+                
+                </td>
+            
+
+            <td class="description last"><p>客户端已存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PLATFORM_EXIST</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10403
+                
+                </td>
+            
+
+            <td class="description last"><p>平台已存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SETTING_KEY_EXIST</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10404
+                
+                </td>
+            
+
+            <td class="description last"><p>配置Key已存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>USERNAME_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10501
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的用户名</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PASSWORD_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10502
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的密码</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>OLD_PASSWORD_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10502
+                
+                </td>
+            
+
+            <td class="description last"><p>旧密码错误</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>USERNAME_EXIST</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10503
+                
+                </td>
+            
+
+            <td class="description last"><p>用户名已存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ROLE_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10504
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的用户角色</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>USER_TYPE_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10505
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的用户类型</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>USER_IS_EXISTED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10506
+                
+                </td>
+            
+
+            <td class="description last"><p>该平台已有此用户</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MOBILE_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10507
+                
+                </td>
+            
+
+            <td class="description last"><p>无效手机号码</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>EMAIL_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10508
+                
+                </td>
+            
+
+            <td class="description last"><p>无效邮箱</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>EMAIL_IS_EXISTED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10509
+                
+                </td>
+            
+
+            <td class="description last"><p>邮箱已经存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MOBILE_IS_EXISTED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10510
+                
+                </td>
+            
+
+            <td class="description last"><p>电话号码已经存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>EMAIL_OR_MOBILE_IS_EXISTED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10511
+                
+                </td>
+            
+
+            <td class="description last"><p>邮箱或者手机号码已经存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>NON_EMAIL_AND_NON_MOBILE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10512
+                
+                </td>
+            
+
+            <td class="description last"><p>手机和邮箱不能同时为空</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>EMAIL_IS_REGISTERED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10513
+                
+                </td>
+            
+
+            <td class="description last"><p>邮箱已注册，请直接登录</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MOBILE_IS_REGISTERED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10514
+                
+                </td>
+            
+
+            <td class="description last"><p>手机号已注册，请直接登录</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ID_NUMBER_EXIST</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10515
+                
+                </td>
+            
+
+            <td class="description last"><p>身份证号已存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PROFILE_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10516
+                
+                </td>
+            
+
+            <td class="description last"><p>无效的用户档案</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CHILD_ID_ERROR</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10517
+                
+                </td>
+            
+
+            <td class="description last"><p>孩子id出错</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PASSWORD_NO_DIFFERENT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10518
+                
+                </td>
+            
+
+            <td class="description last"><p>新旧密码无区别</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PASSWORD_NOT_CONFIRM</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10518
+                
+                </td>
+            
+
+            <td class="description last"><p>确认密码不一致</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ONLY_TEACHER_LOGIN</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10519
+                
+                </td>
+            
+
+            <td class="description last"><p>请用教师账号登录哦</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>UPLOAD_FILE_IS_ERROR</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10601
+                
+                </td>
+            
+
+            <td class="description last"><p>上传的文件是错误的</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>UPLOAD_FILE_TOO_LARGE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10602
+                
+                </td>
+            
+
+            <td class="description last"><p>上传的文件太大了</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>REQUEST_EXTERNAL_FAIL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10603
+                
+                </td>
+            
+
+            <td class="description last"><p>访问外部资源失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>KONG_SETTING_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10701
+                
+                </td>
+            
+
+            <td class="description last"><p>Kong 设置有误</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>KONG_SERVICE_PATH_IS_NULL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10702
+                
+                </td>
+            
+
+            <td class="description last"><p>Kong 服务路径未设置</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>KONG_SERVICE_PATH_IS_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10703
+                
+                </td>
+            
+
+            <td class="description last"><p>Kong 服务路径有误</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>KONG_CONSUMER_SAVE_FAIL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10704
+                
+                </td>
+            
+
+            <td class="description last"><p>Kong consumer 保存失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>KONG_CONSUMER_REMOVE_FAIL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10705
+                
+                </td>
+            
+
+            <td class="description last"><p>Kong consumer 删除失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>KONG_API_CALL_FAIL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10706
+                
+                </td>
+            
+
+            <td class="description last"><p>Kong api 调用失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>KONG_JWT_NOT_EXIST</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10707
+                
+                </td>
+            
+
+            <td class="description last"><p>Kong Jwt 不存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>KONG_CONSUMER_NOT_EXIST</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10708
+                
+                </td>
+            
+
+            <td class="description last"><p>Kong consumer 不存在</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>KONG_EXPIRES_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10709
+                
+                </td>
+            
+
+            <td class="description last"><p>Kong expire 设置有误</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>KONG_ISS_INVALID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10710
+                
+                </td>
+            
+
+            <td class="description last"><p>Kong iss 设置有误</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>REQUEST_USER_TYPE_FAIL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10801
+                
+                </td>
+            
+
+            <td class="description last"><p>请求用户类型失败</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>GET_USER_TYPE_FAIL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    10802
+                
+                </td>
+            
+
+            <td class="description last"><p>获取用户类型失败</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		enum/Status.js
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="startLoopWorker"><span class="type-signature">&lt;async> </span>startLoopWorker(worker, options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>worker</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options.interval</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">integer</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1000
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		starters/loopWorker.js
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="startQueueWorker"><span class="type-signature">&lt;async> </span>startQueueWorker(worker, queueService, queueName, options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Start a message queue worker.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>worker</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>queueService</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>queueName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		starters/queueWorker.js
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="startWorker"><span class="type-signature">&lt;async> </span>startWorker(worker [, workerOptions])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Start a worker app</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>worker</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workerOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>workerOptions.workerName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workerOptions.dontStop</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Don't stop after worker done</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workerOptions.initializer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		starters/worker.js
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) since 2020, K-BOX INNEV PTY LTD
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>
