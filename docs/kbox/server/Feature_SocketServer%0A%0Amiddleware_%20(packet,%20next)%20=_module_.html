@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>@kbox/server Module: Feature_SocketServer
+
+middleware: (packet, next) =></title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">@kbox/server</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Feature_SocketServer%250A%250Amiddleware_%2520(packet,%2520next)%2520=_module_.html">Feature_SocketServer
+
+middleware: (packet, next) =></a></li><li><a href="module-Errors.html">Errors</a></li><li><a href="module-Feature_Acl.html">Feature_Acl</a></li><li><a href="module-Feature_AppRouting.html">Feature_AppRouting</a></li><li><a href="module-Feature_Firebase.html">Feature_Firebase</a></li><li><a href="module-Feature_Koa.html">Feature_Koa</a></li><li><a href="module-Feature_LibModules.html">Feature_LibModules</a></li><li><a href="module-Feature_Middlewares.html">Feature_Middlewares</a></li><li><a href="module-Feature_OAuth2.html">Feature_OAuth2</a></li><li><a href="module-Feature_ObjectStore.html">Feature_ObjectStore</a></li><li><a href="module-Feature_Passport.html">Feature_Passport</a></li><li><a href="module-Feature_Routing.html">Feature_Routing</a></li><li><a href="module-Literal.html">Literal</a></li><li><a href="module-Middleware_AccessLog.html">Middleware_AccessLog</a></li><li><a href="module-Middleware_Action.html">Middleware_Action</a></li><li><a href="module-Middleware_Csrf.html">Middleware_Csrf</a></li><li><a href="module-Middleware_Favicon.html">Middleware_Favicon</a></li><li><a href="module-Middleware_FlashMessage.html">Middleware_FlashMessage</a></li><li><a href="module-Middleware_JsonError.html">Middleware_JsonError</a></li><li><a href="module-Middleware_Markdown.html">Middleware_Markdown</a></li><li><a href="module-Middleware_ParamsValidator.html">Middleware_ParamsValidator</a></li><li><a href="module-Middleware_PassportAuth.html">Middleware_PassportAuth</a></li><li><a href="module-Middleware_PassportCheck.html">Middleware_PassportCheck</a></li><li><a href="module-Middleware_Render.html">Middleware_Render</a></li><li><a href="module-Middleware_ServerPassport.html">Middleware_ServerPassport</a></li><li><a href="module-Middleware_ServeStatic.html">Middleware_ServeStatic</a></li><li><a href="module-Middleware_Session.html">Middleware_Session</a></li><li><a href="module-Middleware_SessionVariables.html">Middleware_SessionVariables</a></li><li><a href="module-Middleware_TemplatedError.html">Middleware_TemplatedError</a></li><li><a href="module-Middleware_Views.html">Middleware_Views</a></li><li><a href="module-Router_Gaml.html">Router_Gaml</a></li><li><a href="module-Router_Module.html">Router_Module</a></li><li><a href="module-Router_Rest.html">Router_Rest</a></li><li><a href="module-Router_Rule.html">Router_Rule</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Controller.html">Controller</a></li><li><a href="module-Errors-BadParams.html">Errors~BadParams</a></li><li><a href="module-Errors-BadRequest.html">Errors~BadRequest</a></li><li><a href="module-Errors-NoContent.html">Errors~NoContent</a></li><li><a href="module-Errors-NotFound.html">Errors~NotFound</a></li><li><a href="module-Errors-ServiceUnavailable.html">Errors~ServiceUnavailable</a></li><li><a href="module-Errors-Unauthorized.html">Errors~Unauthorized</a></li><li><a href="WebModule.html">WebModule</a></li><li><a href="WebServer.html">WebServer</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="WebServer.html#event:httpReady">WebServer#event:httpReady</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#addRoute">addRoute</a></li><li><a href="global.html#addRouter">addRouter</a></li><li><a href="global.html#defaultBackendPath">defaultBackendPath</a></li><li><a href="global.html#getMiddlewareFactory">getMiddlewareFactory</a></li><li><a href="global.html#getService">getService</a></li><li><a href="global.html#loadMiddlewaresFrom">loadMiddlewaresFrom</a></li><li><a href="global.html#log">log</a></li><li><a href="global.html#registerMiddlewareFactory">registerMiddlewareFactory</a></li><li><a href="global.html#require">require</a></li><li><a href="global.html#requireFromLib">requireFromLib</a></li><li><a href="global.html#toWebPath">toWebPath</a></li><li><a href="global.html#useMiddlewares">useMiddlewares</a></li><li><a href="global.html#wrapAction">wrapAction</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	<h1 class="page-title">Module: Feature_SocketServer
+
+middleware: (packet, next) =></h1>
+<section>
+
+<header>
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Socket based Rpc Server<br>
+构建socket.io服务端，具体使用方法看下面例子</p></div>
+        
+
+        
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		appFeatures/socketServer.js
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+        
+            <h3>Examples</h3>
+            
+    <pre class="sunlight-highlight-javascript">// 服务端配置
+&quot;socketServer&quot;: {
+      &quot;path&quot;: &quot;/shoukeChannel&quot;, //服务频道
+      &quot;controllersPath&quot;: &quot;controllers&quot;, //事件处理类的查找目录
+      &quot;routes&quot;: {
+          &quot;/shouke&quot;: { //服务路由，注意这里是需要给客户端连接用的
+             &quot;events&quot;: {
+                 &quot;send&quot;: &quot;shoukeClass.send&quot;, // 自定义send事件，并绑定到处理类和方法
+                 &quot;msg&quot;: &quot;shoukeClass.msg&quot;, // 自定义msg事件，并绑定到处理类和方法
+                 &quot;disconnect&quot;: &quot;socket.disconnect&quot; // 自定义disconnect事件，并绑定到处理类和方法
+             }
+         }
+      }
+}</pre>
+
+    <pre class="sunlight-highlight-javascript">// 服务端事件处理类: src/&lt;controllersPath&gt;/shoukeClass.js
+exports.msg = async (ctx, data) =&gt; {
+     console.log(&quot;msg&quot;, data); // 接收客户端发送的 msg 消息并输出
+     return ctx.socket.emit(&quot;message&quot;, &quot;广播消息给客户端&quot;); // 广播 message 消息给客户端
+}
+
+exports.disconnect = async (ctx, data) =&gt; {
+     console.log(&quot;msg&quot;, data); // 接收客户端发送的 disconnect 消息并输出
+     //TODO: 做其他断开连接的处理
+}
+
+exports.send = async (ctx, data) =&gt; {
+     console.log(&quot;send&quot;, data); // 接收客户端发送的 send 消息并输出
+     return ctx.socket.emit(&quot;send&quot;, &quot;广播消息给客户端&quot;); // 广播 send 消息给客户端
+}</pre>
+
+    <pre class="sunlight-highlight-javascript">// 客户端连接
+const socket = io(&quot;ws://localhost:&lt;prot&gt;/shouke&quot;, { path: &quot;/&lt;server_route&gt;/&lt;socket_path&gt;&quot; }); //初始化websocket，连接服务端。具体的path例子如：shouke/shoukeChannel</pre>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<hr>
+<dt class="name" id=".type">
+    <h4 id=".type"><span class="type-signature">&lt;static> </span>type<span class="type-signature"> :string</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>This feature is loaded at plugin stage</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">string</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		appFeatures/socketServer.js
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id=".load_"><span class="type-signature">&lt;static> </span>load_(appModule, servers)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Load the rpc Server</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>appModule</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">AppModule</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The app module object</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>servers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;ServerOptions></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Rpc server config</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		appFeatures/socketServer.js
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        <dl>
+                
+<hr>
+<dt class="name" id="~ServerOptions">
+    <h4 id="~ServerOptions">ServerOptions</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The socket server options.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    /socket.io
+                
+                </td>
+            
+
+            <td class="description last"><p>name of the path to capture</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>serveClient</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>whether to serve the client files</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>adapter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Adapter</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>the adapter to use. Defaults to an instance of the Adapter that ships with socket.io which is memory based. See socket.io-adapter</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>origins</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>the allowed origins</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parser</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Parser</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>the parser to use. Defaults to an instance of the Parser that ships with socket.io. See socket.io-parser</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		appFeatures/socketServer.js
+	</dd>
+	
+
+	
+
+	
+	<dt class="tag-see method-doc-label method-doc-details-label">See:</dt>
+	<dd class="tag-see">
+		<ul>
+			<li><a href="https://socket.io/docs/server-api/">https://socket.io/docs/server-api/</a> for more options</li>
+			</ul>
+	</dd>
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            </dl>
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) since 2020, K-BOX INNEV PTY LTD
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>
