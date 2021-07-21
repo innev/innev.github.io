@@ -60,12 +60,12 @@ deactivate
 
 ## 五、最佳项目实践
 
-### 5.1. [自定义帮助包](page/helper.md)
+### 5.1. [自定义帮助包](pages/helper.md)
 
-### 5.2. [企业微信包](page/wework.md)
+### 5.2. [企业微信包](pages/wework.md)
 
 ### 5.3. 自定义数据包
 
-### 5.4. [文件或图片上传](page/upload.md)
+### 5.4. [文件或图片上传](pages/upload.md)
 
 ### 5.5. list切片操作
