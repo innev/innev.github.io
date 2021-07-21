@@ -1,0 +1,1432 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>WeRoBot.Client —— 微信 API 操作类 &#8212; WeRoBot 1.13.1 文档</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Message" href="messages.html" />
+    <link rel="prev" title="Session" href="session.html" />
+     
+    
+        <link rel="apple-touch-icon" href="_static/logo.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head><body>
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="messages.html" title="Message"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="session.html" title="Session"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">WeRoBot 1.13.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">WeRoBot.Client</span></code> —— 微信 API 操作类</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="werobot-client-api">
+<h1><code class="docutils literal notranslate"><span class="pre">WeRoBot.Client</span></code> —— 微信 API 操作类<a class="headerlink" href="#werobot-client-api" title="永久链接至标题">¶</a></h1>
+<p>有部分接口暂未实现，可自行调用微信接口。</p>
+<span class="target" id="module-werobot.client"></span><section id="id1">
+<h2>开始开发<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<section id="access-token">
+<h3>获取 access token<a class="headerlink" href="#access-token" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/14/9f9c82c1af308e3b14ba9b973f99a8ba.html">http://mp.weixin.qq.com/wiki/14/9f9c82c1af308e3b14ba9b973f99a8ba.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.grant_token">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">grant_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.grant_token" title="永久链接至目标">¶</a></dt>
+<dd><p>获取 Access Token。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.get_access_token">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_access_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_access_token" title="永久链接至目标">¶</a></dt>
+<dd><p>判断现有的token是否过期。
+用户需要多进程或者多机部署可以手动重写这个函数
+来自定义token的存储，刷新策略。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>返回token</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Client 的操作都会自动进行 <cite>access token</cite> 的获取和过期刷新操作，如果有特殊需求（如多进程部署）可重写 <code class="docutils literal notranslate"><span class="pre">get_access_token</span></code>。</p>
+</div>
+</section>
+<section id="ip">
+<h3>获取微信服务器IP地址<a class="headerlink" href="#ip" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/4/41ef0843d6e108cf6b5649480207561c.html">http://mp.weixin.qq.com/wiki/4/41ef0843d6e108cf6b5649480207561c.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.get_ip_list">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_ip_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_ip_list" title="永久链接至目标">¶</a></dt>
+<dd><p>获取微信服务器IP地址。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id2">
+<h2>自定义菜单<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<section id="id3">
+<h3>自定义菜单创建接口<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/10/0234e39a2025342c17a7d23595c6b40a.html">http://mp.weixin.qq.com/wiki/10/0234e39a2025342c17a7d23595c6b40a.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.create_menu">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">create_menu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">menu_data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.create_menu" title="永久链接至目标">¶</a></dt>
+<dd><p>创建自定义菜单:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">create_menu</span><span class="p">({</span>
+    <span class="s2">&quot;button&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;今日歌曲&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;V1001_TODAY_MUSIC&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;歌手简介&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;V1001_TODAY_SINGER&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;菜单&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sub_button&quot;</span><span class="p">:[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;view&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;搜索&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;http://www.soso.com/&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;view&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;视频&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;http://v.qq.com/&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;赞一下我们&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;V1001_GOOD&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]})</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>menu_data</strong> – Python 字典</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id4">
+<h3>自定义菜单查询接口<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/5/f287d1a5b78a35a8884326312ac3e4ed.html">http://mp.weixin.qq.com/wiki/5/f287d1a5b78a35a8884326312ac3e4ed.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.get_menu">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_menu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_menu" title="永久链接至目标">¶</a></dt>
+<dd><p>查询自定义菜单。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id5">
+<h3>自定义菜单删除接口<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/3/de21624f2d0d3dafde085dafaa226743.html">http://mp.weixin.qq.com/wiki/3/de21624f2d0d3dafde085dafaa226743.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.delete_menu">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">delete_menu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.delete_menu" title="永久链接至目标">¶</a></dt>
+<dd><p>删除自定义菜单。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id6">
+<h3>个性化菜单接口<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/0/c48ccd12b69ae023159b4bfaa7c39c20.html">http://mp.weixin.qq.com/wiki/0/c48ccd12b69ae023159b4bfaa7c39c20.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.create_custom_menu">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">create_custom_menu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">menu_data</span></em>, <em class="sig-param"><span class="n">matchrule</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.create_custom_menu" title="永久链接至目标">¶</a></dt>
+<dd><p>创建个性化菜单:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">button</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;今日歌曲&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;V1001_TODAY_MUSIC&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;菜单&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sub_button&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;view&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;搜索&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;http://www.soso.com/&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;view&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;视频&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;http://v.qq.com/&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;赞一下我们&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;V1001_GOOD&quot;</span>
+        <span class="p">}]</span>
+ <span class="p">}]</span>
+ <span class="n">matchrule</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;group_id&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sex&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;country&quot;</span><span class="p">:</span><span class="s2">&quot;中国&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;province&quot;</span><span class="p">:</span><span class="s2">&quot;广东&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;city&quot;</span><span class="p">:</span><span class="s2">&quot;广州&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;client_platform_type&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;language&quot;</span><span class="p">:</span><span class="s2">&quot;zh_CN&quot;</span>
+<span class="p">}</span>
+<span class="n">client</span><span class="o">.</span><span class="n">create_custom_menu</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">matchrule</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>menu_data</strong> – 如上所示的 Python 字典</p></li>
+<li><p><strong>matchrule</strong> – 如上所示的匹配规则</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.delete_custom_menu">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">delete_custom_menu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">menu_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.delete_custom_menu" title="永久链接至目标">¶</a></dt>
+<dd><p>删除个性化菜单。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>menu_id</strong> – 菜单的 ID</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.match_custom_menu">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">match_custom_menu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.match_custom_menu" title="永久链接至目标">¶</a></dt>
+<dd><p>测试个性化菜单匹配结果。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>user_id</strong> – 要测试匹配的用户 ID</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id7">
+<h3>获取自定义菜单配置接口<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/14/293d0cb8de95e916d1216a33fcb81fd6.html">http://mp.weixin.qq.com/wiki/14/293d0cb8de95e916d1216a33fcb81fd6.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.get_custom_menu_config">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_custom_menu_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_custom_menu_config" title="永久链接至目标">¶</a></dt>
+<dd><p>获取自定义菜单配置接口。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id8">
+<h2>消息管理<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<section id="id9">
+<h3>客服接口<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/11/c88c270ae8935291626538f9c64bd123.html">http://mp.weixin.qq.com/wiki/11/c88c270ae8935291626538f9c64bd123.html</a>
+发送卡券接口暂时未支持。可自行实现。</p>
+<dl class="py method">
+<dt id="werobot.client.Client.add_custom_service_account">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">add_custom_service_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">nickname</span></em>, <em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.add_custom_service_account" title="永久链接至目标">¶</a></dt>
+<dd><p>添加客服帐号。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – 客服账号的用户名</p></li>
+<li><p><strong>nickname</strong> – 客服账号的昵称</p></li>
+<li><p><strong>password</strong> – 客服账号的密码</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.update_custom_service_account">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">update_custom_service_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">nickname</span></em>, <em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.update_custom_service_account" title="永久链接至目标">¶</a></dt>
+<dd><p>修改客服帐号。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – 客服账号的用户名</p></li>
+<li><p><strong>nickname</strong> – 客服账号的昵称</p></li>
+<li><p><strong>password</strong> – 客服账号的密码</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.delete_custom_service_account">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">delete_custom_service_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">nickname</span></em>, <em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.delete_custom_service_account" title="永久链接至目标">¶</a></dt>
+<dd><p>删除客服帐号。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – 客服账号的用户名</p></li>
+<li><p><strong>nickname</strong> – 客服账号的昵称</p></li>
+<li><p><strong>password</strong> – 客服账号的密码</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.upload_custom_service_account_avatar">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">upload_custom_service_account_avatar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">avatar</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.upload_custom_service_account_avatar" title="永久链接至目标">¶</a></dt>
+<dd><p>设置客服帐号的头像。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> – 客服账号的用户名</p></li>
+<li><p><strong>avatar</strong> – 头像文件，必须是 jpg 格式</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.get_custom_service_account_list">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_custom_service_account_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_custom_service_account_list" title="永久链接至目标">¶</a></dt>
+<dd><p>获取所有客服账号。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.get_online_custom_service_account_list">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_online_custom_service_account_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_online_custom_service_account_list" title="永久链接至目标">¶</a></dt>
+<dd><p>获取状态为”在线”的客服账号列表。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.send_text_message">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">send_text_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">content</span></em>, <em class="sig-param"><span class="n">kf_account</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.send_text_message" title="永久链接至目标">¶</a></dt>
+<dd><p>发送文本消息。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> – 用户 ID 。 就是你收到的 <cite>Message</cite> 的 source</p></li>
+<li><p><strong>content</strong> – 消息正文</p></li>
+<li><p><strong>kf_account</strong> – 发送消息的客服账户，默认值为 None，None 为不指定</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.send_image_message">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">send_image_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">media_id</span></em>, <em class="sig-param"><span class="n">kf_account</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.send_image_message" title="永久链接至目标">¶</a></dt>
+<dd><p>发送图片消息。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> – 用户 ID 。 就是你收到的 <cite>Message</cite> 的 source</p></li>
+<li><p><strong>media_id</strong> – 图片的媒体ID。 可以通过 <a class="reference internal" href="#werobot.client.Client.upload_media" title="werobot.client.Client.upload_media"><code class="xref py py-func docutils literal notranslate"><span class="pre">upload_media()</span></code></a> 上传。</p></li>
+<li><p><strong>kf_account</strong> – 发送消息的客服账户，默认值为 None，None 为不指定</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.send_voice_message">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">send_voice_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">media_id</span></em>, <em class="sig-param"><span class="n">kf_account</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.send_voice_message" title="永久链接至目标">¶</a></dt>
+<dd><p>发送语音消息。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> – 用户 ID 。 就是你收到的 <cite>Message</cite> 的 source</p></li>
+<li><p><strong>media_id</strong> – 发送的语音的媒体ID。 可以通过 <a class="reference internal" href="#werobot.client.Client.upload_media" title="werobot.client.Client.upload_media"><code class="xref py py-func docutils literal notranslate"><span class="pre">upload_media()</span></code></a> 上传。</p></li>
+<li><p><strong>kf_account</strong> – 发送消息的客服账户，默认值为 None，None 为不指定</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.send_video_message">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">send_video_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">media_id</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">kf_account</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.send_video_message" title="永久链接至目标">¶</a></dt>
+<dd><p>发送视频消息。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> – 用户 ID 。 就是你收到的 <cite>Message</cite> 的 source</p></li>
+<li><p><strong>media_id</strong> – 发送的视频的媒体ID。 可以通过 <a class="reference internal" href="#werobot.client.Client.upload_media" title="werobot.client.Client.upload_media"><code class="xref py py-func docutils literal notranslate"><span class="pre">upload_media()</span></code></a> 上传。</p></li>
+<li><p><strong>title</strong> – 视频消息的标题</p></li>
+<li><p><strong>description</strong> – 视频消息的描述</p></li>
+<li><p><strong>kf_account</strong> – 发送消息的客服账户，默认值为 None，None 为不指定</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.send_music_message">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">send_music_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">url</span></em>, <em class="sig-param"><span class="n">hq_url</span></em>, <em class="sig-param"><span class="n">thumb_media_id</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">kf_account</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.send_music_message" title="永久链接至目标">¶</a></dt>
+<dd><p>发送音乐消息。
+注意如果你遇到了缩略图不能正常显示的问题， 不要慌张； 目前来看是微信服务器端的问题。
+对此我们也无能为力 ( <a class="reference external" href="https://github.com/whtsky/WeRoBot/issues/197">#197</a> )</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> – 用户 ID 。 就是你收到的 <cite>Message</cite> 的 source</p></li>
+<li><p><strong>url</strong> – 音乐链接</p></li>
+<li><p><strong>hq_url</strong> – 高品质音乐链接，wifi环境优先使用该链接播放音乐</p></li>
+<li><p><strong>thumb_media_id</strong> – 缩略图的媒体ID。 可以通过 <a class="reference internal" href="#werobot.client.Client.upload_media" title="werobot.client.Client.upload_media"><code class="xref py py-func docutils literal notranslate"><span class="pre">upload_media()</span></code></a> 上传。</p></li>
+<li><p><strong>title</strong> – 音乐标题</p></li>
+<li><p><strong>description</strong> – 音乐描述</p></li>
+<li><p><strong>kf_account</strong> – 发送消息的客服账户，默认值为 None，None 为不指定</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.send_article_message">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">send_article_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">articles</span></em>, <em class="sig-param"><span class="n">kf_account</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.send_article_message" title="永久链接至目标">¶</a></dt>
+<dd><p>发送图文消息:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">articles</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Happy Day&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;Is Really A Happy Day&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;URL&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;picurl&quot;</span><span class="p">:</span><span class="s2">&quot;PIC_URL&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Happy Day&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;Is Really A Happy Day&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;URL&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;picurl&quot;</span><span class="p">:</span><span class="s2">&quot;PIC_URL&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+<span class="n">client</span><span class="o">.</span><span class="n">send_acticle_message</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">,</span> <span class="n">acticles</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> – 用户 ID 。 就是你收到的 <cite>Message</cite> 的 source</p></li>
+<li><p><strong>articles</strong> – 一个包含至多8个 article 字典或 Article 对象的数组</p></li>
+<li><p><strong>kf_account</strong> – 发送消息的客服账户，默认值为 None，None 为不指定</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.send_news_message">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">send_news_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">media_id</span></em>, <em class="sig-param"><span class="n">kf_account</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.send_news_message" title="永久链接至目标">¶</a></dt>
+<dd><p>发送永久素材中的图文消息。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> – 用户 ID 。 就是你收到的 <cite>Message</cite> 的 source</p></li>
+<li><p><strong>media_id</strong> – 媒体文件 ID</p></li>
+<li><p><strong>kf_account</strong> – 发送消息的客服账户，默认值为 None，None 为不指定</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.send_miniprogrampage_message">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">send_miniprogrampage_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">appid</span></em>, <em class="sig-param"><span class="n">pagepath</span></em>, <em class="sig-param"><span class="n">thumb_media_id</span></em>, <em class="sig-param"><span class="n">kf_account</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.send_miniprogrampage_message" title="永久链接至目标">¶</a></dt>
+<dd><p>发送小程序卡片（要求小程序与公众号已关联）</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> – 用户 ID 。 就是你收到的 <cite>Message</cite> 的 source</p></li>
+<li><p><strong>title</strong> – 小程序卡片的标题</p></li>
+<li><p><strong>appid</strong> – 小程序的 appid，要求小程序的 appid 需要与公众号有关联关系</p></li>
+<li><p><strong>pagepath</strong> – 小程序的页面路径，跟 app.json 对齐，支持参数，比如 pages/index/index?foo=bar</p></li>
+<li><p><strong>thumb_media_id</strong> – 小程序卡片图片的媒体 ID，小程序卡片图片建议大小为 520*416</p></li>
+<li><p><strong>kf_account</strong> – 需要以某个客服帐号来发消息时指定的客服账户</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id11">
+<h3>群发接口<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<dl class="py method">
+<dt id="werobot.client.Client.send_mass_msg">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">send_mass_msg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg_type</span></em>, <em class="sig-param"><span class="n">content</span></em>, <em class="sig-param"><span class="n">user_list</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">send_ignore_reprint</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">client_msg_id</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.send_mass_msg" title="永久链接至目标">¶</a></dt>
+<dd><p>向指定对象群发信息。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg_type</strong> – 群发类型，图文消息为 mpnews，文本消息为 text，语音为 voice，音乐为 music，图片为 image，视频为 video，卡券为 wxcard。</p></li>
+<li><p><strong>content</strong> – 群发内容。</p></li>
+<li><p><strong>user_list</strong> – 发送对象，整型代表用户组，列表代表指定用户，如果为 None 则代表全部发送。</p></li>
+<li><p><strong>send_ignore_reprint</strong> – 图文消息被判定为转载时，是否继续群发。 True 为继续群发（转载），False 为停止群发。 该参数默认为 False。</p></li>
+<li><p><strong>client_msg_id</strong> – 群发时，微信后台将对 24 小时内的群发记录进行检查，如果该 clientmsgid 已经存在一条群发记录，则会拒绝本次群发请求，返回已存在的群发 msgid, 控制再 64 个字符内。</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包。</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.delete_mass_msg">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">delete_mass_msg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg_id</span></em>, <em class="sig-param"><span class="n">article_idx</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.delete_mass_msg" title="永久链接至目标">¶</a></dt>
+<dd><p>群发之后，随时可以通过该接口删除群发。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg_id</strong> – 发送出去的消息 ID。</p></li>
+<li><p><strong>article_idx</strong> – 要删除的文章在图文消息中的位置，第一篇编号为 1，该字段不填或填 0 会删除全部文章。</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>微信返回的 json 数据。</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.send_mass_preview_to_user">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">send_mass_preview_to_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg_type</span></em>, <em class="sig-param"><span class="n">content</span></em>, <em class="sig-param"><span class="n">user</span></em>, <em class="sig-param"><span class="n">user_type</span><span class="o">=</span><span class="default_value">'openid'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.send_mass_preview_to_user" title="永久链接至目标">¶</a></dt>
+<dd><p>开发者可通过该接口发送消息给指定用户，在手机端查看消息的样式和排版。为了满足第三方平台开发者的需求，在保留对 openID 预览能力的同时，增加了对指定微信号发送预览的能力，但该能力每日调用次数有限制（100 次），请勿滥用。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_type</strong> – 预览对象，<cite>openid</cite> 代表以 openid 发送，<cite>wxname</cite> 代表以微信号发送。</p></li>
+<li><p><strong>msg_type</strong> – 发送类型，图文消息为 mpnews，文本消息为 text，语音为 voice，音乐为 music，图片为 image，视频为 video，卡券为 wxcard。</p></li>
+<li><p><strong>content</strong> – 预览内容。</p></li>
+<li><p><strong>user</strong> – 预览用户。</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 json。</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.get_mass_msg_status">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_mass_msg_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_mass_msg_status" title="永久链接至目标">¶</a></dt>
+<dd><p>查询群发消息发送状态。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>msg_id</strong> – 群发消息后返回的消息 id。</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 json。</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.get_mass_msg_speed">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_mass_msg_speed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_mass_msg_speed" title="永久链接至目标">¶</a></dt>
+<dd><p>获取群发速度。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>返回的 json。</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id12">
+<h2>用户管理<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<section id="id13">
+<h3>用户分组管理<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/8/d6d33cf60bce2a2e4fb10a21be9591b8.html">http://mp.weixin.qq.com/wiki/8/d6d33cf60bce2a2e4fb10a21be9591b8.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.create_group">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">create_group</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.create_group" title="永久链接至目标">¶</a></dt>
+<dd><p>创建分组。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>name</strong> – 分组名字（30个字符以内）</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.get_groups">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_groups</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_groups" title="永久链接至目标">¶</a></dt>
+<dd><p>查询所有分组。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.get_group_by_id">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_group_by_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">openid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_group_by_id" title="永久链接至目标">¶</a></dt>
+<dd><p>查询用户所在分组。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>openid</strong> – 用户的OpenID</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.update_group">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">update_group</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">group_id</span></em>, <em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.update_group" title="永久链接至目标">¶</a></dt>
+<dd><p>修改分组名。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_id</strong> – 分组 ID，由微信分配</p></li>
+<li><p><strong>name</strong> – 分组名字（30个字符以内）</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.move_user">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">move_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">group_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.move_user" title="永久链接至目标">¶</a></dt>
+<dd><p>移动用户分组。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> – 用户 ID，即收到的 <cite>Message</cite> 的 source</p></li>
+<li><p><strong>group_id</strong> – 分组 ID</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.move_users">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">move_users</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id_list</span></em>, <em class="sig-param"><span class="n">group_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.move_users" title="永久链接至目标">¶</a></dt>
+<dd><p>批量移动用户分组。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id_list</strong> – 用户 ID 的列表（长度不能超过50）</p></li>
+<li><p><strong>group_id</strong> – 分组 ID</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.delete_group">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">delete_group</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">group_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.delete_group" title="永久链接至目标">¶</a></dt>
+<dd><p>删除分组。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>group_id</strong> – 要删除的分组的 ID</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id14">
+<h3>设置备注名<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/16/528098c4a6a87b05120a7665c8db0460.html">http://mp.weixin.qq.com/wiki/16/528098c4a6a87b05120a7665c8db0460.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.remark_user">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">remark_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">remark</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.remark_user" title="永久链接至目标">¶</a></dt>
+<dd><p>设置备注名。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> – 设置备注名的用户 ID</p></li>
+<li><p><strong>remark</strong> – 新的备注名，长度必须小于30字符</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id15">
+<h3>获取用户基本信息<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/1/8a5ce6257f1d3b2afb20f83e72b72ce9.html">http://mp.weixin.qq.com/wiki/1/8a5ce6257f1d3b2afb20f83e72b72ce9.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.get_user_info">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_user_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">lang</span><span class="o">=</span><span class="default_value">'zh_CN'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_user_info" title="永久链接至目标">¶</a></dt>
+<dd><p>获取用户基本信息。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> – 用户 ID 。 就是你收到的 <cite>Message</cite> 的 source</p></li>
+<li><p><strong>lang</strong> – 返回国家地区语言版本，zh_CN 简体，zh_TW 繁体，en 英语</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.get_users_info">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_users_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id_list</span></em>, <em class="sig-param"><span class="n">lang</span><span class="o">=</span><span class="default_value">'zh_CN'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_users_info" title="永久链接至目标">¶</a></dt>
+<dd><p>批量获取用户基本信息。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id_list</strong> – 用户 ID 的列表</p></li>
+<li><p><strong>lang</strong> – 返回国家地区语言版本，zh_CN 简体，zh_TW 繁体，en 英语</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id16">
+<h2>账户管理<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
+<p>长链接转短链接接口和微信认证事件推送暂未添加，可自行实现。</p>
+<section id="id17">
+<h3>生成带参数的二维码<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/18/167e7d94df85d8389df6c94a7a8f78ba.html">http://mp.weixin.qq.com/wiki/18/167e7d94df85d8389df6c94a7a8f78ba.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.create_qrcode">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">create_qrcode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.create_qrcode" title="永久链接至目标">¶</a></dt>
+<dd><p>创建二维码。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>data</strong> – 你要发送的参数 dict</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.show_qrcode">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">show_qrcode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ticket</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.show_qrcode" title="永久链接至目标">¶</a></dt>
+<dd><p>通过ticket换取二维码。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>ticket</strong> – 二维码 ticket 。可以通过 <a class="reference internal" href="#werobot.client.Client.create_qrcode" title="werobot.client.Client.create_qrcode"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_qrcode()</span></code></a> 获取到</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 Request 对象</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id18">
+<h3>获取用户列表<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/12/54773ff6da7b8bdc95b7d2667d84b1d4.html">http://mp.weixin.qq.com/wiki/12/54773ff6da7b8bdc95b7d2667d84b1d4.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.get_followers">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_followers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">first_user_id</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_followers" title="永久链接至目标">¶</a></dt>
+<dd><p>获取关注者列表
+详情请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/index.php">http://mp.weixin.qq.com/wiki/index.php</a>?title=获取关注者列表</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>first_user_id</strong> – 可选。第一个拉取的OPENID，不填默认从头开始拉取</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id19">
+<h2>素材管理<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h2>
+<section id="id20">
+<h3>新增临时素材<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/15/2d353966323806a202cd2deaafe8e557.html">http://mp.weixin.qq.com/wiki/15/2d353966323806a202cd2deaafe8e557.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.upload_media">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">upload_media</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">media_type</span></em>, <em class="sig-param"><span class="n">media_file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.upload_media" title="永久链接至目标">¶</a></dt>
+<dd><p>上传临时多媒体文件。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>media_type</strong> – 媒体文件类型，分别有图片（image）、语音（voice）、视频（video）和缩略图（thumb）</p></li>
+<li><p><strong>media_file</strong> – 要上传的文件，一个 File-object</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id21">
+<h3>获取临时素材<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/9/677a85e3f3849af35de54bb5516c2521.html">http://mp.weixin.qq.com/wiki/9/677a85e3f3849af35de54bb5516c2521.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.download_media">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">download_media</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">media_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.download_media" title="永久链接至目标">¶</a></dt>
+<dd><p>下载临时多媒体文件。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>media_id</strong> – 媒体文件 ID</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>requests 的 Response 实例</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id22">
+<h3>新增永久素材<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/10/10ea5a44870f53d79449290dfd43d006.html">http://mp.weixin.qq.com/wiki/10/10ea5a44870f53d79449290dfd43d006.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.add_news">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">add_news</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">articles</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.add_news" title="永久链接至目标">¶</a></dt>
+<dd><p>新增永久图文素材:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">articles</span> <span class="o">=</span> <span class="p">[{</span>
+   <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">TITLE</span><span class="p">,</span>
+   <span class="s2">&quot;thumb_media_id&quot;</span><span class="p">:</span> <span class="n">THUMB_MEDIA_ID</span><span class="p">,</span>
+   <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="n">AUTHOR</span><span class="p">,</span>
+   <span class="s2">&quot;digest&quot;</span><span class="p">:</span> <span class="n">DIGEST</span><span class="p">,</span>
+   <span class="s2">&quot;show_cover_pic&quot;</span><span class="p">:</span> <span class="n">SHOW_COVER_PIC</span><span class="p">(</span><span class="mi">0</span> <span class="o">/</span> <span class="mi">1</span><span class="p">),</span>
+   <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">CONTENT</span><span class="p">,</span>
+   <span class="s2">&quot;content_source_url&quot;</span><span class="p">:</span> <span class="n">CONTENT_SOURCE_URL</span>
+<span class="p">}</span>
+<span class="c1"># 若新增的是多图文素材，则此处应有几段articles结构，最多8段</span>
+<span class="p">]</span>
+<span class="n">client</span><span class="o">.</span><span class="n">add_news</span><span class="p">(</span><span class="n">articles</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>articles</strong> – 如示例中的数组</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.upload_news_picture">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">upload_news_picture</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.upload_news_picture" title="永久链接至目标">¶</a></dt>
+<dd><p>上传图文消息内的图片。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>file</strong> – 要上传的文件，一个 File-object</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.upload_permanent_media">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">upload_permanent_media</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">media_type</span></em>, <em class="sig-param"><span class="n">media_file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.upload_permanent_media" title="永久链接至目标">¶</a></dt>
+<dd><p>上传其他类型永久素材。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>media_type</strong> – 媒体文件类型，分别有图片（image）、语音（voice）和缩略图（thumb）</p></li>
+<li><p><strong>media_file</strong> – 要上传的文件，一个 File-object</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.client.Client.upload_permanent_video">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">upload_permanent_video</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">introduction</span></em>, <em class="sig-param"><span class="n">video</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.upload_permanent_video" title="永久链接至目标">¶</a></dt>
+<dd><p>上传永久视频。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – 视频素材的标题</p></li>
+<li><p><strong>introduction</strong> – 视频素材的描述</p></li>
+<li><p><strong>video</strong> – 要上传的视频，一个 File-object</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>requests 的 Response 实例</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id23">
+<h3>获取永久素材<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/12/3c12fac7c14cb4d0e0d4fe2fbc87b638.html">http://mp.weixin.qq.com/wiki/12/3c12fac7c14cb4d0e0d4fe2fbc87b638.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.download_permanent_media">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">download_permanent_media</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">media_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.download_permanent_media" title="永久链接至目标">¶</a></dt>
+<dd><p>获取永久素材。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>media_id</strong> – 媒体文件 ID</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>requests 的 Response 实例</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id24">
+<h3>删除永久素材<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/7/2212203f4e17253b9aef77dc788f5337.html">http://mp.weixin.qq.com/wiki/7/2212203f4e17253b9aef77dc788f5337.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.delete_permanent_media">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">delete_permanent_media</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">media_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.delete_permanent_media" title="永久链接至目标">¶</a></dt>
+<dd><p>删除永久素材。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>media_id</strong> – 媒体文件 ID</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id25">
+<h3>上传图文消息素材<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
+<dl class="py method">
+<dt id="werobot.client.Client.upload_news">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">upload_news</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">articles</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.upload_news" title="永久链接至目标">¶</a></dt>
+<dd><p>上传图文消息素材</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">articles</span> <span class="o">=</span> <span class="p">[{</span>
+    <span class="s2">&quot;thumb_media_id&quot;</span><span class="p">:</span><span class="s2">&quot;qI6_Ze_6PtV7svjolgs-rN6stStuHIjs9_DidOHaj0Q-mwvBelOXCFZiq2OsIU-p&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;author&quot;</span><span class="p">:</span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Happy Day&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;content_source_url&quot;</span><span class="p">:</span><span class="s2">&quot;www.qq.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="s2">&quot;content&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;digest&quot;</span><span class="p">:</span><span class="s2">&quot;digest&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;show_cover_pic&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;need_open_comment&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;only_fans_can_comment&quot;</span><span class="p">:</span><span class="mi">1</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+<p>具体请参考: <a class="reference external" href="https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Batch_Sends_and_Originality_Checks.html#1">https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Batch_Sends_and_Originality_Checks.html#1</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>articles</strong> – 上传的图文消息数据。</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包。</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id26">
+<h3>修改永久图文素材<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/10/c7bad9a463db20ff8ccefeedeef51f9e.html">http://mp.weixin.qq.com/wiki/10/c7bad9a463db20ff8ccefeedeef51f9e.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.update_news">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">update_news</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">update_data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.update_news" title="永久链接至目标">¶</a></dt>
+<dd><p>修改永久图文素材:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">update_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;media_id&quot;</span><span class="p">:</span><span class="n">MEDIA_ID</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span><span class="n">INDEX</span><span class="p">,</span>
+    <span class="s2">&quot;articles&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">TITLE</span><span class="p">,</span>
+        <span class="s2">&quot;thumb_media_id&quot;</span><span class="p">:</span> <span class="n">THUMB_MEDIA_ID</span><span class="p">,</span>
+        <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="n">AUTHOR</span><span class="p">,</span>
+        <span class="s2">&quot;digest&quot;</span><span class="p">:</span> <span class="n">DIGEST</span><span class="p">,</span>
+        <span class="s2">&quot;show_cover_pic&quot;</span><span class="p">:</span> <span class="n">SHOW_COVER_PIC</span><span class="p">(</span><span class="mi">0</span> <span class="o">/</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">CONTENT</span><span class="p">,</span>
+        <span class="s2">&quot;content_source_url&quot;</span><span class="p">:</span> <span class="n">CONTENT_SOURCE_URL</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">client</span><span class="o">.</span><span class="n">update_news</span><span class="p">(</span><span class="n">update_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>update_data</strong> – 更新的数据，要包含 media_id（图文素材的 ID），index（要更新的文章在图文消息中的位置），articles（新的图文素材数据）</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id27">
+<h3>获取素材总数<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/5/a641fd7b5db7a6a946ebebe2ac166885.html">http://mp.weixin.qq.com/wiki/5/a641fd7b5db7a6a946ebebe2ac166885.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.get_media_count">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_media_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_media_count" title="永久链接至目标">¶</a></dt>
+<dd><p>获取素材总数。</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id28">
+<h3>获取素材列表<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
+<p>详细请参考 <a class="reference external" href="http://mp.weixin.qq.com/wiki/15/8386c11b7bc4cdd1499c572bfe2e95b3.html">http://mp.weixin.qq.com/wiki/15/8386c11b7bc4cdd1499c572bfe2e95b3.html</a></p>
+<dl class="py method">
+<dt id="werobot.client.Client.get_media_list">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_media_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">media_type</span></em>, <em class="sig-param"><span class="n">offset</span></em>, <em class="sig-param"><span class="n">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_media_list" title="永久链接至目标">¶</a></dt>
+<dd><p>获取素材列表。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>media_type</strong> – 素材的类型，图片（image）、视频（video）、语音 （voice）、图文（news）</p></li>
+<li><p><strong>offset</strong> – 从全部素材的该偏移位置开始返回，0表示从第一个素材返回</p></li>
+<li><p><strong>count</strong> – 返回素材的数量，取值在1到20之间</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id29">
+<h2>用户标签管理<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h2>
+<p>详细请参考 <a class="reference external" href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140837">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140837</a></p>
+<section id="id30">
+<h3>创建标签<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+<dl class="py method">
+<dt id="werobot.client.Client.create_tag">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">create_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.create_tag" title="永久链接至目标">¶</a></dt>
+<dd><p>创建一个新标签</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>tag_name</strong> – 标签名</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id31">
+<h3>获取公众号已创建的标签<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
+<dl class="py method">
+<dt id="werobot.client.Client.get_tags">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_tags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_tags" title="永久链接至目标">¶</a></dt>
+<dd><p>获取已经存在的标签</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id32">
+<h3>编辑标签<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h3>
+<dl class="py method">
+<dt id="werobot.client.Client.update_tag">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">update_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag_id</span></em>, <em class="sig-param"><span class="n">tag_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.update_tag" title="永久链接至目标">¶</a></dt>
+<dd><p>修改标签</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tag_id</strong> – 标签 ID</p></li>
+<li><p><strong>tag_name</strong> – 新的标签名</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id33">
+<h3>删除标签<a class="headerlink" href="#id33" title="永久链接至标题">¶</a></h3>
+<dl class="py method">
+<dt id="werobot.client.Client.delete_tag">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">delete_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.delete_tag" title="永久链接至目标">¶</a></dt>
+<dd><p>删除标签</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>tag_id</strong> – 标签 ID</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id34">
+<h3>获取标签下粉丝列表<a class="headerlink" href="#id34" title="永久链接至标题">¶</a></h3>
+<dl class="py method">
+<dt id="werobot.client.Client.get_users_by_tag">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_users_by_tag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag_id</span></em>, <em class="sig-param"><span class="n">next_open_id</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_users_by_tag" title="永久链接至目标">¶</a></dt>
+<dd><p>获取标签下粉丝列表</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tag_id</strong> – 标签 ID</p></li>
+<li><p><strong>next_open_id</strong> – 第一个拉取用户的 OPENID，默认从头开始拉取</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id35">
+<h3>批量为用户打标签<a class="headerlink" href="#id35" title="永久链接至标题">¶</a></h3>
+<dl class="py method">
+<dt id="werobot.client.Client.tag_users">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">tag_users</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag_id</span></em>, <em class="sig-param"><span class="n">open_id_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.tag_users" title="永久链接至目标">¶</a></dt>
+<dd><p>批量为用户打标签</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tag_id</strong> – 标签 ID</p></li>
+<li><p><strong>open_id_list</strong> – 包含一个或多个用户的 OPENID 的列表</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id36">
+<h3>批量为用户取消标签<a class="headerlink" href="#id36" title="永久链接至标题">¶</a></h3>
+<dl class="py method">
+<dt id="werobot.client.Client.untag_users">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">untag_users</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tag_id</span></em>, <em class="sig-param"><span class="n">open_id_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.untag_users" title="永久链接至目标">¶</a></dt>
+<dd><p>批量为用户取消标签</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tag_id</strong> – 标签 ID</p></li>
+<li><p><strong>open_id_list</strong> – 包含一个或多个用户的 OPENID 的列表</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id37">
+<h3>获取用户身上的标签列表<a class="headerlink" href="#id37" title="永久链接至标题">¶</a></h3>
+<dl class="py method">
+<dt id="werobot.client.Client.get_tags_by_user">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">get_tags_by_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">open_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.get_tags_by_user" title="永久链接至目标">¶</a></dt>
+<dd><p>获取用户身上的标签列表</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>open_id</strong> – 用户的 OPENID</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id38">
+<h2>模板消息<a class="headerlink" href="#id38" title="永久链接至标题">¶</a></h2>
+<dl class="py method">
+<dt id="werobot.client.Client.send_template_message">
+<code class="sig-prename descclassname">Client.</code><code class="sig-name descname">send_template_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em>, <em class="sig-param"><span class="n">template_id</span></em>, <em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">url</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">miniprogram</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.client.Client.send_template_message" title="永久链接至目标">¶</a></dt>
+<dd><p>发送模板消息
+详情请参考 <a class="reference external" href="https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Template_Message_Interface.html">https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Template_Message_Interface.html</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> – 用户 ID 。 就是你收到的 <cite>Message</cite> 的 source</p></li>
+<li><p><strong>template_id</strong> – 模板 ID。</p></li>
+<li><p><strong>data</strong> – 用于渲染模板的数据。</p></li>
+<li><p><strong>url</strong> – 模板消息的可选链接。</p></li>
+<li><p><strong>miniprogram</strong> – 跳小程序所需数据的可选数据。</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回的 JSON 数据包</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id39">
+<h2>返回码都是什么意思？<a class="headerlink" href="#id39" title="永久链接至标题">¶</a></h2>
+<p>参考 <a class="reference external" href="https://mp.weixin.qq.com/wiki/10/6380dc743053a91c544ffd2b7c959166.html">https://mp.weixin.qq.com/wiki/10/6380dc743053a91c544ffd2b7c959166.html</a></p>
+</section>
+<section id="api-unauthorized">
+<h2>48001 – API Unauthorized<a class="headerlink" href="#api-unauthorized" title="永久链接至标题">¶</a></h2>
+<p>如果你遇到了这个错误，请检查你的微信公众号是否有调用该接口的权限。
+参考： <a class="reference external" href="https://mp.weixin.qq.com/wiki/13/8d4957b72037e3308a0ca1b21f25ae8d.html">https://mp.weixin.qq.com/wiki/13/8d4957b72037e3308a0ca1b21f25ae8d.html</a></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <h3><a href="index.html">WeRoBot</a></h3>
+    <a href="http://github.com/offu/WeRoBot" class="sidebar-github-link">
+        <img src="https://img.shields.io/github/stars/offu/WeRoBot.svg?style=social&label=Star&maxAge=2592000" />
+        <img src="https://img.shields.io/github/forks/offu/WeRoBot.svg?style=social&label=Fork&maxAge=2592000" />
+    </a>
+
+    <h3>遇到问题了？</h3>
+    <p>
+        如果你遇到了问题，请去 <a href="https://github.com/whtsky/WeRoBot/issues/new">发 Issue</a>。
+    </p>
+
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">WeRoBot.Client</span></code> —— 微信 API 操作类</a><ul>
+<li><a class="reference internal" href="#id1">开始开发</a><ul>
+<li><a class="reference internal" href="#access-token">获取 access token</a></li>
+<li><a class="reference internal" href="#ip">获取微信服务器IP地址</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">自定义菜单</a><ul>
+<li><a class="reference internal" href="#id3">自定义菜单创建接口</a></li>
+<li><a class="reference internal" href="#id4">自定义菜单查询接口</a></li>
+<li><a class="reference internal" href="#id5">自定义菜单删除接口</a></li>
+<li><a class="reference internal" href="#id6">个性化菜单接口</a></li>
+<li><a class="reference internal" href="#id7">获取自定义菜单配置接口</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">消息管理</a><ul>
+<li><a class="reference internal" href="#id9">客服接口</a></li>
+<li><a class="reference internal" href="#id11">群发接口</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">用户管理</a><ul>
+<li><a class="reference internal" href="#id13">用户分组管理</a></li>
+<li><a class="reference internal" href="#id14">设置备注名</a></li>
+<li><a class="reference internal" href="#id15">获取用户基本信息</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id16">账户管理</a><ul>
+<li><a class="reference internal" href="#id17">生成带参数的二维码</a></li>
+<li><a class="reference internal" href="#id18">获取用户列表</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id19">素材管理</a><ul>
+<li><a class="reference internal" href="#id20">新增临时素材</a></li>
+<li><a class="reference internal" href="#id21">获取临时素材</a></li>
+<li><a class="reference internal" href="#id22">新增永久素材</a></li>
+<li><a class="reference internal" href="#id23">获取永久素材</a></li>
+<li><a class="reference internal" href="#id24">删除永久素材</a></li>
+<li><a class="reference internal" href="#id25">上传图文消息素材</a></li>
+<li><a class="reference internal" href="#id26">修改永久图文素材</a></li>
+<li><a class="reference internal" href="#id27">获取素材总数</a></li>
+<li><a class="reference internal" href="#id28">获取素材列表</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id29">用户标签管理</a><ul>
+<li><a class="reference internal" href="#id30">创建标签</a></li>
+<li><a class="reference internal" href="#id31">获取公众号已创建的标签</a></li>
+<li><a class="reference internal" href="#id32">编辑标签</a></li>
+<li><a class="reference internal" href="#id33">删除标签</a></li>
+<li><a class="reference internal" href="#id34">获取标签下粉丝列表</a></li>
+<li><a class="reference internal" href="#id35">批量为用户打标签</a></li>
+<li><a class="reference internal" href="#id36">批量为用户取消标签</a></li>
+<li><a class="reference internal" href="#id37">获取用户身上的标签列表</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id38">模板消息</a></li>
+<li><a class="reference internal" href="#id39">返回码都是什么意思？</a></li>
+<li><a class="reference internal" href="#api-unauthorized">48001 – API Unauthorized</a></li>
+</ul>
+</li>
+</ul>
+<h3>导航</h3>
+<ul>
+      <li>上一个主题: <a href="session.html" title="上一章">Session</a></li>
+      <li>下一个主题: <a href="messages.html" title="下一章">Message</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+
+    
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2019, offu.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+    
+
+  </body>
+</html>

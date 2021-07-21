@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>与其他 Web 框架集成 &#8212; WeRoBot 1.13.1 文档</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="错误页面" href="error-page.html" />
+    <link rel="prev" title="Config" href="config.html" />
+     
+    
+        <link rel="apple-touch-icon" href="_static/logo.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head><body>
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="error-page.html" title="错误页面"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="config.html" title="Config"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">WeRoBot 1.13.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">与其他 Web 框架集成</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="web">
+<h1>与其他 Web 框架集成<a class="headerlink" href="#web" title="永久链接至标题">¶</a></h1>
+<p>WeRoBot 可以作为独立服务运行，也可以集成在其他 Web 框架中一同运行。</p>
+<section id="django">
+<h2>Django<a class="headerlink" href="#django" title="永久链接至标题">¶</a></h2>
+<p>WeRoBot 支持 Django 2.2+。</p>
+<p>首先，在一个文件中写好你的微信机器人</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filename: robot.py</span>
+
+<span class="kn">from</span> <span class="nn">werobot</span> <span class="kn">import</span> <span class="n">WeRoBot</span>
+
+<span class="n">myrobot</span> <span class="o">=</span> <span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@myrobot</span><span class="o">.</span><span class="n">handler</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
+</pre></div>
+</div>
+<p>然后，在你 Django 项目中的 <code class="docutils literal notranslate"><span class="pre">urls.py</span></code> 中调用 <a class="reference internal" href="#werobot.contrib.django.make_view" title="werobot.contrib.django.make_view"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.contrib.django.make_view()</span></code></a> ，将 WeRoBot 集成进 Django</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">include</span><span class="p">,</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">werobot.contrib.django</span> <span class="kn">import</span> <span class="n">make_view</span>
+<span class="kn">from</span> <span class="nn">robot</span> <span class="kn">import</span> <span class="n">myrobot</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^robot/&#39;</span><span class="p">,</span> <span class="n">make_view</span><span class="p">(</span><span class="n">myrobot</span><span class="p">)),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<span class="target" id="module-werobot.contrib.django"></span><dl class="py function">
+<dt id="werobot.contrib.django.make_view">
+<code class="sig-prename descclassname">werobot.contrib.django.</code><code class="sig-name descname">make_view</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">robot</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.contrib.django.make_view" title="永久链接至目标">¶</a></dt>
+<dd><p>为一个 BaseRoBot 生成 Django view。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>robot</strong> – 一个 BaseRoBot 实例。</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>一个标准的 Django view</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="flask">
+<h2>Flask<a class="headerlink" href="#flask" title="永久链接至标题">¶</a></h2>
+<p>首先, 同样在文件中写好你的微信机器人</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filename: robot.py</span>
+
+<span class="kn">from</span> <span class="nn">werobot</span> <span class="kn">import</span> <span class="n">WeRoBot</span>
+
+<span class="n">myrobot</span> <span class="o">=</span> <span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@myrobot</span><span class="o">.</span><span class="n">handler</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
+</pre></div>
+</div>
+<p>然后, 在 Flask 项目中为 Flask 实例集成 WeRoBot</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">robot</span> <span class="kn">import</span> <span class="n">myrobot</span>
+<span class="kn">from</span> <span class="nn">werobot.contrib.flask</span> <span class="kn">import</span> <span class="n">make_view</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s1">&#39;/robot/&#39;</span><span class="p">,</span> <span class="c1"># WeRoBot 挂载地址</span>
+                 <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;werobot&#39;</span><span class="p">,</span> <span class="c1"># Flask 的 endpoint</span>
+                 <span class="n">view_func</span><span class="o">=</span><span class="n">make_view</span><span class="p">(</span><span class="n">myrobot</span><span class="p">),</span>
+                 <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<span class="target" id="module-werobot.contrib.flask"></span><dl class="py function">
+<dt id="werobot.contrib.flask.make_view">
+<code class="sig-prename descclassname">werobot.contrib.flask.</code><code class="sig-name descname">make_view</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">robot</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.contrib.flask.make_view" title="永久链接至目标">¶</a></dt>
+<dd><p>为一个 BaseRoBot 生成 Flask view。</p>
+<p>Usage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">werobot</span> <span class="kn">import</span> <span class="n">WeRoBot</span>
+
+<span class="n">robot</span> <span class="o">=</span> <span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@robot</span><span class="o">.</span><span class="n">handler</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">werobot.contrib.flask</span> <span class="kn">import</span> <span class="n">make_view</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_url_rule</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s1">&#39;/robot/&#39;</span><span class="p">,</span> <span class="c1"># WeRoBot 的绑定地址</span>
+                <span class="n">endpoint</span><span class="o">=</span><span class="s1">&#39;werobot&#39;</span><span class="p">,</span> <span class="c1"># Flask 的 endpoint</span>
+                <span class="n">view_func</span><span class="o">=</span><span class="n">make_view</span><span class="p">(</span><span class="n">robot</span><span class="p">),</span>
+                <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>robot</strong> – 一个 BaseRoBot 实例</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>一个标准的 Flask view</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="bottle">
+<h2>Bottle<a class="headerlink" href="#bottle" title="永久链接至标题">¶</a></h2>
+<p>在你的 Bottle App 中集成 WeRoBot</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">werobot</span> <span class="kn">import</span> <span class="n">WeRoBot</span>
+
+<span class="n">myrobot</span> <span class="o">=</span> <span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+
+<span class="nd">@myrobot</span><span class="o">.</span><span class="n">handler</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
+
+<span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">Bottle</span>
+<span class="kn">from</span> <span class="nn">werobot.contrib.bottle</span> <span class="kn">import</span> <span class="n">make_view</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Bottle</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/robot&#39;</span><span class="p">,</span>  <span class="c1"># WeRoBot 挂载地址</span>
+         <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">],</span>
+         <span class="n">make_view</span><span class="p">(</span><span class="n">myrobot</span><span class="p">))</span>
+</pre></div>
+</div>
+<span class="target" id="module-werobot.contrib.bottle"></span><dl class="py function">
+<dt id="werobot.contrib.bottle.make_view">
+<code class="sig-prename descclassname">werobot.contrib.bottle.</code><code class="sig-name descname">make_view</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">robot</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.contrib.bottle.make_view" title="永久链接至目标">¶</a></dt>
+<dd><p>为一个 BaseRoBot 生成 Bottle view。</p>
+<p>Usage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">werobot</span> <span class="kn">import</span> <span class="n">WeRoBot</span>
+
+<span class="n">robot</span> <span class="o">=</span> <span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@robot</span><span class="o">.</span><span class="n">handler</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
+
+<span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">Bottle</span>
+<span class="kn">from</span> <span class="nn">werobot.contrib.bottle</span> <span class="kn">import</span> <span class="n">make_view</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Bottle</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span>
+    <span class="s1">&#39;/robot&#39;</span><span class="p">,</span>  <span class="c1"># WeRoBot 挂载地址</span>
+    <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">],</span>
+    <span class="n">make_view</span><span class="p">(</span><span class="n">robot</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>robot</strong> – 一个 BaseRoBot 实例</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>一个标准的 Bottle view</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="tornado">
+<h2>Tornado<a class="headerlink" href="#tornado" title="永久链接至标题">¶</a></h2>
+<p>最简单的 Hello World</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.ioloop</span>
+<span class="kn">import</span> <span class="nn">tornado.web</span>
+<span class="kn">from</span> <span class="nn">werobot</span> <span class="kn">import</span> <span class="n">WeRoBot</span>
+<span class="kn">from</span> <span class="nn">werobot.contrib.tornado</span> <span class="kn">import</span> <span class="n">make_handler</span>
+
+<span class="n">myrobot</span> <span class="o">=</span> <span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@myrobot</span><span class="o">.</span><span class="n">handler</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
+
+<span class="n">application</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/robot/&quot;</span><span class="p">,</span> <span class="n">make_handler</span><span class="p">(</span><span class="n">myrobot</span><span class="p">)),</span>
+<span class="p">])</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">application</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+    <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<span class="target" id="module-werobot.contrib.tornado"></span><dl class="py function">
+<dt id="werobot.contrib.tornado.make_handler">
+<code class="sig-prename descclassname">werobot.contrib.tornado.</code><code class="sig-name descname">make_handler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">robot</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.contrib.tornado.make_handler" title="永久链接至目标">¶</a></dt>
+<dd><p>为一个 BaseRoBot 生成 Tornado Handler。</p>
+<p>Usage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.ioloop</span>
+<span class="kn">import</span> <span class="nn">tornado.web</span>
+<span class="kn">from</span> <span class="nn">werobot</span> <span class="kn">import</span> <span class="n">WeRoBot</span>
+<span class="kn">from</span> <span class="nn">tornado_werobot</span> <span class="kn">import</span> <span class="n">make_handler</span>
+
+<span class="n">robot</span> <span class="o">=</span> <span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@robot</span><span class="o">.</span><span class="n">handler</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
+
+<span class="n">application</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">make_handler</span><span class="p">(</span><span class="n">robot</span><span class="p">)),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>robot</strong> – 一个 BaseRoBot 实例。</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>一个标准的 Tornado Handler</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <h3><a href="index.html">WeRoBot</a></h3>
+    <a href="http://github.com/offu/WeRoBot" class="sidebar-github-link">
+        <img src="https://img.shields.io/github/stars/offu/WeRoBot.svg?style=social&label=Star&maxAge=2592000" />
+        <img src="https://img.shields.io/github/forks/offu/WeRoBot.svg?style=social&label=Fork&maxAge=2592000" />
+    </a>
+
+    <h3>遇到问题了？</h3>
+    <p>
+        如果你遇到了问题，请去 <a href="https://github.com/whtsky/WeRoBot/issues/new">发 Issue</a>。
+    </p>
+
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">与其他 Web 框架集成</a><ul>
+<li><a class="reference internal" href="#django">Django</a></li>
+<li><a class="reference internal" href="#flask">Flask</a></li>
+<li><a class="reference internal" href="#bottle">Bottle</a></li>
+<li><a class="reference internal" href="#tornado">Tornado</a></li>
+</ul>
+</li>
+</ul>
+<h3>导航</h3>
+<ul>
+      <li>上一个主题: <a href="config.html" title="上一章">Config</a></li>
+      <li>下一个主题: <a href="error-page.html" title="下一章">错误页面</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+
+    
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2019, offu.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+    
+
+  </body>
+</html>

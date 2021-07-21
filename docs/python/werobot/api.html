@@ -1,0 +1,747 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>API &#8212; WeRoBot 1.13.1 文档</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="贡献指南" href="contribution-guide.html" />
+     
+    
+        <link rel="apple-touch-icon" href="_static/logo.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head><body>
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="changelog.html" title="Changelog"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="contribution-guide.html" title="贡献指南"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">WeRoBot 1.13.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">API</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-werobot">
+<span id="api"></span><h1>API<a class="headerlink" href="#module-werobot" title="永久链接至标题">¶</a></h1>
+<section id="module-werobot.robot">
+<span id="id1"></span><h2>应用对象<a class="headerlink" href="#module-werobot.robot" title="永久链接至标题">¶</a></h2>
+<dl class="py class">
+<dt id="werobot.robot.BaseRoBot">
+<em class="property">class </em><code class="sig-prename descclassname">werobot.robot.</code><code class="sig-name descname">BaseRoBot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">token</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">logger</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">enable_session</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">session_storage</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">app_id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">app_secret</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">encoding_aes_key</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">config</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot" title="永久链接至目标">¶</a></dt>
+<dd><p>BaseRoBot 是整个应用的核心对象，负责提供 handler 的维护，消息和事件的处理等核心功能。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logger</strong> – 用来输出 log 的 logger，如果是 <code class="docutils literal notranslate"><span class="pre">None</span></code>，将使用 werobot.logger</p></li>
+<li><p><strong>config</strong> – 用来设置的 <a class="reference internal" href="#werobot.config.Config" title="werobot.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.config.Config</span></code></a> 对象 </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>对于下面的参数推荐使用 <a class="reference internal" href="#werobot.config.Config" title="werobot.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a> 进行设置，    并且以下参数均已 <strong>deprecated</strong>。</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>token</strong> – 微信公众号设置的 token <strong>(deprecated)</strong></p></li>
+<li><p><strong>enable_session</strong> – 是否开启 session <strong>(deprecated)</strong></p></li>
+<li><p><strong>session_storage</strong> – 用来储存 session 的对象，如果为 <code class="docutils literal notranslate"><span class="pre">None</span></code>，    将使用 werobot.session.sqlitestorage.SQLiteStorage <strong>(deprecated)</strong></p></li>
+<li><p><strong>app_id</strong> – 微信公众号设置的 app id <strong>(deprecated)</strong></p></li>
+<li><p><strong>app_secret</strong> – 微信公众号设置的 app secret <strong>(deprecated)</strong></p></li>
+<li><p><strong>encoding_aes_key</strong> – 用来加解密消息的 aes key <strong>(deprecated)</strong></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.add_filter">
+<code class="sig-name descname">add_filter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em>, <em class="sig-param"><span class="n">rules</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.add_filter" title="永久链接至目标">¶</a></dt>
+<dd><p>为 BaseRoBot 添加一个 <code class="docutils literal notranslate"><span class="pre">filter</span> <span class="pre">handler</span></code>。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>func</strong> – 如果 rules 通过，则处理该消息的 handler。</p></li>
+<li><p><strong>rules</strong> – 一个 list，包含要匹配的字符串或者正则表达式。</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.add_handler">
+<code class="sig-name descname">add_handler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em>, <em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">'all'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.add_handler" title="永久链接至目标">¶</a></dt>
+<dd><p>为 BaseRoBot 实例添加一个 handler。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>func</strong> – 要作为 handler 的方法。</p></li>
+<li><p><strong>type</strong> – handler 的种类。</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.card_not_pass_check">
+<code class="sig-name descname">card_not_pass_check</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.card_not_pass_check" title="永久链接至目标">¶</a></dt>
+<dd><p>为生成的卡券未通过审核 <code class="docutils literal notranslate"><span class="pre">(card_not_pass_check_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.card_pass_check">
+<code class="sig-name descname">card_pass_check</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.card_pass_check" title="永久链接至目标">¶</a></dt>
+<dd><p>为生成的卡券通过审核 <code class="docutils literal notranslate"><span class="pre">(card_pass_check_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.card_pay_order">
+<code class="sig-name descname">card_pay_order</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.card_pay_order" title="永久链接至目标">¶</a></dt>
+<dd><p>为券点发生变动 <code class="docutils literal notranslate"><span class="pre">(card_pay_order_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.card_sku_remind">
+<code class="sig-name descname">card_sku_remind</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.card_sku_remind" title="永久链接至目标">¶</a></dt>
+<dd><p>为某个card_id的初始库存数大于200且当前库存小于等于100 <code class="docutils literal notranslate"><span class="pre">(card_sku_remind_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.check_signature">
+<code class="sig-name descname">check_signature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timestamp</span></em>, <em class="sig-param"><span class="n">nonce</span></em>, <em class="sig-param"><span class="n">signature</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.check_signature" title="永久链接至目标">¶</a></dt>
+<dd><p>根据时间戳和生成签名的字符串 (nonce) 检查签名。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timestamp</strong> – 时间戳</p></li>
+<li><p><strong>nonce</strong> – 生成签名的随机字符串</p></li>
+<li><p><strong>signature</strong> – 要检查的签名</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>如果签名合法将返回 <code class="docutils literal notranslate"><span class="pre">True</span></code>，不合法将返回 <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.click">
+<code class="sig-name descname">click</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.click" title="永久链接至目标">¶</a></dt>
+<dd><p>为自定义菜单事件 <code class="docutils literal notranslate"><span class="pre">(click)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.error_page">
+<code class="sig-name descname">error_page</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.error_page" title="永久链接至目标">¶</a></dt>
+<dd><p>为 robot 指定 Signature 验证不通过时显示的错误页面。</p>
+<p>Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@robot</span><span class="o">.</span><span class="n">error_page</span>
+<span class="k">def</span> <span class="nf">make_error_page</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;&lt;h1&gt;喵喵喵 </span><span class="si">%s</span><span class="s2"> 不是给麻瓜访问的快走开&lt;/h1&gt;&quot;</span> <span class="o">%</span> <span class="n">url</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.filter">
+<code class="sig-name descname">filter</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.filter" title="永久链接至目标">¶</a></dt>
+<dd><p>为文本 <code class="docutils literal notranslate"><span class="pre">(text)</span></code> 消息添加 handler 的简便方法。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">&#64;filter(&quot;xxx&quot;)</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;filter(re.compile(&quot;xxx&quot;))</span></code>
+或 <code class="docutils literal notranslate"><span class="pre">&#64;filter(&quot;xxx&quot;,</span> <span class="pre">&quot;xxx2&quot;)</span></code> 的形式为特定内容添加 handler。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.get_encrypted_reply">
+<code class="sig-name descname">get_encrypted_reply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.get_encrypted_reply" title="永久链接至目标">¶</a></dt>
+<dd><p>对一个指定的 WeRoBot Message ，获取 handlers 处理后得到的 Reply。
+如果可能，对该 Reply 进行加密。
+返回 Reply Render 后的文本。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>message</strong> – 一个 WeRoBot Message 实例。</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>reply （纯文本）</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.get_reply">
+<code class="sig-name descname">get_reply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.get_reply" title="永久链接至目标">¶</a></dt>
+<dd><p>根据 message 的内容获取 Reply 对象。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>message</strong> – 要处理的 message</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>获取的 Reply 对象</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.handler">
+<code class="sig-name descname">handler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.handler" title="永久链接至目标">¶</a></dt>
+<dd><p>为每一条消息或事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.image">
+<code class="sig-name descname">image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.image" title="永久链接至目标">¶</a></dt>
+<dd><p>为图像 <code class="docutils literal notranslate"><span class="pre">(image)</span></code> 消息添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.key_click">
+<code class="sig-name descname">key_click</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.key_click" title="永久链接至目标">¶</a></dt>
+<dd><p>为自定义菜单 <code class="docutils literal notranslate"><span class="pre">(click)</span></code> 事件添加 handler 的简便方法。</p>
+<p><strong>&#64;key_click(‘KEYNAME’)</strong> 用来为特定 key 的点击事件添加 handler 方法。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.link">
+<code class="sig-name descname">link</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.link" title="永久链接至目标">¶</a></dt>
+<dd><p>为链接 <code class="docutils literal notranslate"><span class="pre">(link)</span></code> 消息添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.location">
+<code class="sig-name descname">location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.location" title="永久链接至目标">¶</a></dt>
+<dd><p>为位置 <code class="docutils literal notranslate"><span class="pre">(location)</span></code> 消息添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.location_event">
+<code class="sig-name descname">location_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.location_event" title="永久链接至目标">¶</a></dt>
+<dd><p>为上报位置 <code class="docutils literal notranslate"><span class="pre">(location_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.location_select">
+<code class="sig-name descname">location_select</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.location_select" title="永久链接至目标">¶</a></dt>
+<dd><p>为弹出地理位置选择器的事件推送 <code class="docutils literal notranslate"><span class="pre">(location_select_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.parse_message">
+<code class="sig-name descname">parse_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">body</span></em>, <em class="sig-param"><span class="n">timestamp</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">nonce</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">msg_signature</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.parse_message" title="永久链接至目标">¶</a></dt>
+<dd><p>解析获取到的 Raw XML ，如果需要的话进行解密，返回 WeRoBot Message。
+:param body: 微信服务器发来的请求中的 Body。
+:return: WeRoBot Message</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.pic_photo_or_album">
+<code class="sig-name descname">pic_photo_or_album</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.pic_photo_or_album" title="永久链接至目标">¶</a></dt>
+<dd><p>为弹出拍照或者相册发图的事件推送 <code class="docutils literal notranslate"><span class="pre">(pic_photo_or_album_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.pic_sysphoto">
+<code class="sig-name descname">pic_sysphoto</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.pic_sysphoto" title="永久链接至目标">¶</a></dt>
+<dd><p>为弹出系统拍照发图的事件推送 <code class="docutils literal notranslate"><span class="pre">(pic_sysphoto_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.pic_weixin">
+<code class="sig-name descname">pic_weixin</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.pic_weixin" title="永久链接至目标">¶</a></dt>
+<dd><p>为弹出微信相册发图器的事件推送 <code class="docutils literal notranslate"><span class="pre">(pic_weixin_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.scan">
+<code class="sig-name descname">scan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.scan" title="永久链接至目标">¶</a></dt>
+<dd><p>为扫描推送 <code class="docutils literal notranslate"><span class="pre">(scan)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.scancode_push">
+<code class="sig-name descname">scancode_push</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.scancode_push" title="永久链接至目标">¶</a></dt>
+<dd><p>为扫描推送 <code class="docutils literal notranslate"><span class="pre">(scancode_push)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.scancode_waitmsg">
+<code class="sig-name descname">scancode_waitmsg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.scancode_waitmsg" title="永久链接至目标">¶</a></dt>
+<dd><p>为扫描弹消息 <code class="docutils literal notranslate"><span class="pre">(scancode_waitmsg)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.shortvideo">
+<code class="sig-name descname">shortvideo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.shortvideo" title="永久链接至目标">¶</a></dt>
+<dd><p>为小视频 <code class="docutils literal notranslate"><span class="pre">(shortvideo)</span></code> 消息添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.submit_membercard_user_info">
+<code class="sig-name descname">submit_membercard_user_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.submit_membercard_user_info" title="永久链接至目标">¶</a></dt>
+<dd><p>为用户通过一键激活的方式提交信息并点击激活或者用户修改会员卡信息 <code class="docutils literal notranslate"><span class="pre">(submit_membercard_user_info_event)</span></code>
+事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.subscribe">
+<code class="sig-name descname">subscribe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.subscribe" title="永久链接至目标">¶</a></dt>
+<dd><p>为被关注 <code class="docutils literal notranslate"><span class="pre">(subscribe)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.templatesendjobfinish_event">
+<code class="sig-name descname">templatesendjobfinish_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.templatesendjobfinish_event" title="永久链接至目标">¶</a></dt>
+<dd><p>在模版消息发送任务完成后，微信服务器会将是否送达成功作为通知，发送到开发者中心中填写的服务器配置地址中</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.text">
+<code class="sig-name descname">text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.text" title="永久链接至目标">¶</a></dt>
+<dd><p>为文本 <code class="docutils literal notranslate"><span class="pre">(text)</span></code> 消息添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.unknown">
+<code class="sig-name descname">unknown</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.unknown" title="永久链接至目标">¶</a></dt>
+<dd><p>为未知类型 <code class="docutils literal notranslate"><span class="pre">(unknown)</span></code> 消息添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.unknown_event">
+<code class="sig-name descname">unknown_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.unknown_event" title="永久链接至目标">¶</a></dt>
+<dd><p>为未知类型 <code class="docutils literal notranslate"><span class="pre">(unknown_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.unsubscribe">
+<code class="sig-name descname">unsubscribe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.unsubscribe" title="永久链接至目标">¶</a></dt>
+<dd><p>为被取消关注 <code class="docutils literal notranslate"><span class="pre">(unsubscribe)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.update_member_card">
+<code class="sig-name descname">update_member_card</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.update_member_card" title="永久链接至目标">¶</a></dt>
+<dd><p>为用户的会员卡积分余额发生变动 <code class="docutils literal notranslate"><span class="pre">(update_member_card_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.user_consume_card">
+<code class="sig-name descname">user_consume_card</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.user_consume_card" title="永久链接至目标">¶</a></dt>
+<dd><p>为卡券被核销 <code class="docutils literal notranslate"><span class="pre">(user_consume_card_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.user_del_card">
+<code class="sig-name descname">user_del_card</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.user_del_card" title="永久链接至目标">¶</a></dt>
+<dd><p>为用户删除卡券 <code class="docutils literal notranslate"><span class="pre">(user_del_card_event)</span></code>  事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.user_enter_session_from_card">
+<code class="sig-name descname">user_enter_session_from_card</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.user_enter_session_from_card" title="永久链接至目标">¶</a></dt>
+<dd><p>为用户卡券里点击查看公众号进入会话 <code class="docutils literal notranslate"><span class="pre">(user_enter_session_from_card_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.user_get_card">
+<code class="sig-name descname">user_get_card</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.user_get_card" title="永久链接至目标">¶</a></dt>
+<dd><p>为用户领取卡券 <code class="docutils literal notranslate"><span class="pre">(user_get_card_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.user_gifting_card">
+<code class="sig-name descname">user_gifting_card</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.user_gifting_card" title="永久链接至目标">¶</a></dt>
+<dd><p>为用户转赠卡券 <code class="docutils literal notranslate"><span class="pre">(user_gifting_card_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.user_pay_from_pay_cell">
+<code class="sig-name descname">user_pay_from_pay_cell</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.user_pay_from_pay_cell" title="永久链接至目标">¶</a></dt>
+<dd><p>为微信买单完成 <code class="docutils literal notranslate"><span class="pre">(user_pay_from_pay_cell_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.user_scan_product">
+<code class="sig-name descname">user_scan_product</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.user_scan_product" title="永久链接至目标">¶</a></dt>
+<dd><p>为打开商品主页事件推送 <code class="docutils literal notranslate"><span class="pre">(user_scan_product_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.user_scan_product_async">
+<code class="sig-name descname">user_scan_product_async</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.user_scan_product_async" title="永久链接至目标">¶</a></dt>
+<dd><p>为地理位置信息异步推送 <code class="docutils literal notranslate"><span class="pre">(user_scan_product_async_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.user_scan_product_enter_session">
+<code class="sig-name descname">user_scan_product_enter_session</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.user_scan_product_enter_session" title="永久链接至目标">¶</a></dt>
+<dd><p>为进入公众号事件推送 <code class="docutils literal notranslate"><span class="pre">(user_scan_product_enter_session_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.user_scan_product_verify_action">
+<code class="sig-name descname">user_scan_product_verify_action</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.user_scan_product_verify_action" title="永久链接至目标">¶</a></dt>
+<dd><p>为商品审核结果推送 <code class="docutils literal notranslate"><span class="pre">(user_scan_product_verify_action_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.user_view_card">
+<code class="sig-name descname">user_view_card</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.user_view_card" title="永久链接至目标">¶</a></dt>
+<dd><p>为用户进入会员卡 <code class="docutils literal notranslate"><span class="pre">(user_view_card_event)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.video">
+<code class="sig-name descname">video</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.video" title="永久链接至目标">¶</a></dt>
+<dd><p>为视频 <code class="docutils literal notranslate"><span class="pre">(video)</span></code> 消息添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.view">
+<code class="sig-name descname">view</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.view" title="永久链接至目标">¶</a></dt>
+<dd><p>为链接 <code class="docutils literal notranslate"><span class="pre">(view)</span></code> 事件添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.robot.BaseRoBot.voice">
+<code class="sig-name descname">voice</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.BaseRoBot.voice" title="永久链接至目标">¶</a></dt>
+<dd><p>为语音 <code class="docutils literal notranslate"><span class="pre">(voice)</span></code> 消息添加一个 handler 方法的装饰器。</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="werobot.robot.WeRoBot">
+<em class="property">class </em><code class="sig-prename descclassname">werobot.robot.</code><code class="sig-name descname">WeRoBot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">token</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">logger</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">enable_session</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">session_storage</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">app_id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">app_secret</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">encoding_aes_key</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">config</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.WeRoBot" title="永久链接至目标">¶</a></dt>
+<dd><p>WeRoBot 是一个继承自 BaseRoBot 的对象，在 BaseRoBot 的基础上使用了 bottle 框架，
+提供接收微信服务器发来的请求的功能。</p>
+<dl class="py method">
+<dt id="werobot.robot.WeRoBot.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">server</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">host</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">port</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">enable_pretty_logging</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.robot.WeRoBot.run" title="永久链接至目标">¶</a></dt>
+<dd><p>运行 WeRoBot。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>server</strong> – 传递给 Bottle 框架 run 方法的参数，详情见        <a class="reference external" href="https://bottlepy.org/docs/dev/deployment.html#switching-the-server-backend">bottle 文档</a></p></li>
+<li><p><strong>host</strong> – 运行时绑定的主机地址</p></li>
+<li><p><strong>port</strong> – 运行时绑定的主机端口</p></li>
+<li><p><strong>enable_pretty_logging</strong> – 是否开启 log 的输出格式优化</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-werobot.config">
+<span id="id2"></span><h2>配置对象<a class="headerlink" href="#module-werobot.config" title="永久链接至标题">¶</a></h2>
+<dl class="py class">
+<dt id="werobot.config.Config">
+<em class="property">class </em><code class="sig-prename descclassname">werobot.config.</code><code class="sig-name descname">Config</code><a class="headerlink" href="#werobot.config.Config" title="永久链接至目标">¶</a></dt>
+<dd><dl class="py method">
+<dt id="werobot.config.Config.from_object">
+<code class="sig-name descname">from_object</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.config.Config.from_object" title="永久链接至目标">¶</a></dt>
+<dd><p>在给定的 Python 对象中读取配置。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>obj</strong> – 一个 Python 对象</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="werobot.config.Config.from_pyfile">
+<code class="sig-name descname">from_pyfile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.config.Config.from_pyfile" title="永久链接至目标">¶</a></dt>
+<dd><p>在一个 Python 文件中读取配置。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>filename</strong> – 配置文件的文件名</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>如果读取成功，返回 <code class="docutils literal notranslate"><span class="pre">True</span></code>，如果失败，会抛出错误异常</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-werobot.session.sqlitestorage">
+<span id="session"></span><h2>Session 对象<a class="headerlink" href="#module-werobot.session.sqlitestorage" title="永久链接至标题">¶</a></h2>
+<dl class="py class">
+<dt id="werobot.session.sqlitestorage.SQLiteStorage">
+<em class="property">class </em><code class="sig-prename descclassname">werobot.session.sqlitestorage.</code><code class="sig-name descname">SQLiteStorage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">'werobot_session.sqlite3'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.session.sqlitestorage.SQLiteStorage" title="永久链接至目标">¶</a></dt>
+<dd><p>SQLiteStorge 会把 Session 数据储存在一个 SQLite 数据库文件中</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">werobot</span>
+<span class="kn">from</span> <span class="nn">werobot.session.sqlitestorage</span> <span class="kn">import</span> <span class="n">SQLiteStorage</span>
+
+<span class="n">session_storage</span> <span class="o">=</span> <span class="n">SQLiteStorage</span>
+<span class="n">robot</span> <span class="o">=</span> <span class="n">werobot</span><span class="o">.</span><span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="n">enable_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">session_storage</span><span class="o">=</span><span class="n">session_storage</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>filename</strong> – SQLite数据库的文件名, 默认是 <code class="docutils literal notranslate"><span class="pre">werobot_session.sqlite3</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-werobot.session.filestorage"></span><dl class="py class">
+<dt id="werobot.session.filestorage.FileStorage">
+<em class="property">class </em><code class="sig-prename descclassname">werobot.session.filestorage.</code><code class="sig-name descname">FileStorage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'werobot_session'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.session.filestorage.FileStorage" title="永久链接至目标">¶</a></dt>
+<dd><p>FileStorage 会把你的 Session 数据以 dbm 形式储存在文件中。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>filename</strong> – 文件名， 默认为 <code class="docutils literal notranslate"><span class="pre">werobot_session</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-werobot.session.mongodbstorage"></span><dl class="py class">
+<dt id="werobot.session.mongodbstorage.MongoDBStorage">
+<em class="property">class </em><code class="sig-prename descclassname">werobot.session.mongodbstorage.</code><code class="sig-name descname">MongoDBStorage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">collection</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.session.mongodbstorage.MongoDBStorage" title="永久链接至目标">¶</a></dt>
+<dd><p>MongoDBStorage 会把你的 Session 数据储存在一个 MongoDB Collection 中</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymongo</span>
+<span class="kn">import</span> <span class="nn">werobot</span>
+<span class="kn">from</span> <span class="nn">werobot.session.mongodbstorage</span> <span class="kn">import</span> <span class="n">MongoDBStorage</span>
+
+<span class="n">collection</span> <span class="o">=</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">MongoClient</span><span class="p">()[</span><span class="s2">&quot;wechat&quot;</span><span class="p">][</span><span class="s2">&quot;session&quot;</span><span class="p">]</span>
+<span class="n">session_storage</span> <span class="o">=</span> <span class="n">MongoDBStorage</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
+<span class="n">robot</span> <span class="o">=</span> <span class="n">werobot</span><span class="o">.</span><span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="n">enable_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">session_storage</span><span class="o">=</span><span class="n">session_storage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你需要安装 <code class="docutils literal notranslate"><span class="pre">pymongo</span></code> 才能使用 MongoDBStorage 。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>collection</strong> – 一个 MongoDB Collection。</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-werobot.session.redisstorage"></span><dl class="py class">
+<dt id="werobot.session.redisstorage.RedisStorage">
+<em class="property">class </em><code class="sig-prename descclassname">werobot.session.redisstorage.</code><code class="sig-name descname">RedisStorage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">redis</span></em>, <em class="sig-param"><span class="n">prefix</span><span class="o">=</span><span class="default_value">'ws_'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.session.redisstorage.RedisStorage" title="永久链接至目标">¶</a></dt>
+<dd><p>RedisStorage 会把你的 Session 数据储存在 Redis 中</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">redis</span>
+<span class="kn">import</span> <span class="nn">werobot</span>
+<span class="kn">from</span> <span class="nn">werobot.session.redisstorage</span> <span class="kn">import</span> <span class="n">RedisStorage</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">()</span>
+<span class="n">session_storage</span> <span class="o">=</span> <span class="n">RedisStorage</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;my_prefix_&quot;</span><span class="p">)</span>
+<span class="n">robot</span> <span class="o">=</span> <span class="n">werobot</span><span class="o">.</span><span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="n">enable_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">session_storage</span><span class="o">=</span><span class="n">session_storage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你需要安装 <code class="docutils literal notranslate"><span class="pre">redis</span></code> 才能使用 RedisStorage 。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>redis</strong> – 一个 Redis Client。</p></li>
+<li><p><strong>prefix</strong> – Reids 中 Session 数据 key 的 prefix 。默认为 <code class="docutils literal notranslate"><span class="pre">ws_</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-werobot.session.saekvstorage"></span><dl class="py class">
+<dt id="werobot.session.saekvstorage.SaeKVDBStorage">
+<em class="property">class </em><code class="sig-prename descclassname">werobot.session.saekvstorage.</code><code class="sig-name descname">SaeKVDBStorage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span><span class="o">=</span><span class="default_value">'ws_'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.session.saekvstorage.SaeKVDBStorage" title="永久链接至目标">¶</a></dt>
+<dd><p>SaeKVDBStorage 使用SAE 的 KVDB 来保存你的session</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">werobot</span>
+<span class="kn">from</span> <span class="nn">werobot.session.saekvstorage</span> <span class="kn">import</span> <span class="n">SaeKVDBStorage</span>
+
+<span class="n">session_storage</span> <span class="o">=</span> <span class="n">SaeKVDBStorage</span><span class="p">()</span>
+<span class="n">robot</span> <span class="o">=</span> <span class="n">werobot</span><span class="o">.</span><span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="n">enable_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">session_storage</span><span class="o">=</span><span class="n">session_storage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>需要先在后台开启 KVDB 支持</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>prefix</strong> – KVDB 中 Session 数据 key 的 prefix 。默认为 <code class="docutils literal notranslate"><span class="pre">ws_</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-werobot.session.mysqlstorage"></span><dl class="py class">
+<dt id="werobot.session.mysqlstorage.MySQLStorage">
+<em class="property">class </em><code class="sig-prename descclassname">werobot.session.mysqlstorage.</code><code class="sig-name descname">MySQLStorage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">conn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.session.mysqlstorage.MySQLStorage" title="永久链接至目标">¶</a></dt>
+<dd><p>MySQLStorage 会把你的 Session 数据储存在 MySQL 中</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MySQLdb</span> <span class="c1"># 使用 mysqlclient</span>
+<span class="kn">import</span> <span class="nn">werobot</span>
+<span class="kn">from</span> <span class="nn">werobot.session.mysqlstorage</span> <span class="kn">import</span> <span class="n">MySQLStorage</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">passwd</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">session_storage</span> <span class="o">=</span> <span class="n">MySQLStorage</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+<span class="n">robot</span> <span class="o">=</span> <span class="n">werobot</span><span class="o">.</span><span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="n">enable_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">session_storage</span><span class="o">=</span><span class="n">session_storage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>或者</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymysql</span> <span class="c1"># 使用 pymysql</span>
+<span class="kn">import</span> <span class="nn">werobot</span>
+<span class="kn">from</span> <span class="nn">werobot.session.mysqlstorage</span> <span class="kn">import</span> <span class="n">MySQLStorage</span>
+
+<span class="n">session_storage</span> <span class="o">=</span> <span class="n">MySQLStorage</span><span class="p">(</span>
+<span class="n">conn</span><span class="o">=</span><span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">user</span><span class="o">=</span><span class="s1">&#39;喵&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;喵喵&#39;</span><span class="p">,</span>
+    <span class="n">db</span><span class="o">=</span><span class="s1">&#39;werobot&#39;</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+    <span class="n">charset</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span>
+<span class="p">))</span>
+<span class="n">robot</span> <span class="o">=</span> <span class="n">werobot</span><span class="o">.</span><span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="n">enable_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">session_storage</span><span class="o">=</span><span class="n">session_storage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你需要安装一个 MySQL Client 才能使用 MySQLStorage，比如 <code class="docutils literal notranslate"><span class="pre">pymysql</span></code>，<code class="docutils literal notranslate"><span class="pre">mysqlclient</span></code> 。</p>
+<p>理论上符合 <a class="reference external" href="https://www.python.org/dev/peps/pep-0249/#connection-objects">PEP-249</a> 的库都可以使用，    测试时使用的是 <code class="docutils literal notranslate"><span class="pre">pymysql</span></code>。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>conn</strong> – <p><a class="reference external" href="https://www.python.org/dev/peps/pep-0249/#connection-objects">PEP-249</a>    定义的 Connection 对象</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-werobot.session.postgresqlstorage"></span><dl class="py class">
+<dt id="werobot.session.postgresqlstorage.PostgreSQLStorage">
+<em class="property">class </em><code class="sig-prename descclassname">werobot.session.postgresqlstorage.</code><code class="sig-name descname">PostgreSQLStorage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">conn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.session.postgresqlstorage.PostgreSQLStorage" title="永久链接至目标">¶</a></dt>
+<dd><p>PostgreSQLStorage 会把你的 Session 数据储存在 PostgreSQL 中</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>  <span class="c1"># pip install psycopg2-binary</span>
+<span class="kn">import</span> <span class="nn">werobot</span>
+<span class="kn">from</span> <span class="nn">werobot.session.postgresqlstorage</span> <span class="kn">import</span> <span class="n">PostgreSQLStorage</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s1">&#39;5432&#39;</span><span class="p">,</span> <span class="n">dbname</span><span class="o">=</span><span class="s1">&#39;werobot&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;nya&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;nyanya&#39;</span><span class="p">)</span>
+<span class="n">session_storage</span> <span class="o">=</span> <span class="n">PostgreSQLStorage</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+<span class="n">robot</span> <span class="o">=</span> <span class="n">werobot</span><span class="o">.</span><span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="n">enable_session</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">session_storage</span><span class="o">=</span><span class="n">session_storage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你需要安装一个 <code class="docutils literal notranslate"><span class="pre">PostgreSQL</span> <span class="pre">Client</span></code> 才能使用 PostgreSQLStorage，比如 <code class="docutils literal notranslate"><span class="pre">psycopg2</span></code>。</p>
+<p>理论上符合 <a class="reference external" href="https://www.python.org/dev/peps/pep-0249/#connection-objects">PEP-249</a> 的库都可以使用，    测试时使用的是 <code class="docutils literal notranslate"><span class="pre">psycopg2</span></code>。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>conn</strong> – <p><a class="reference external" href="https://www.python.org/dev/peps/pep-0249/#connection-objects">PEP-249</a>    定义的 Connection 对象</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-werobot.logger">
+<span id="log"></span><h2>log<a class="headerlink" href="#module-werobot.logger" title="永久链接至标题">¶</a></h2>
+<dl class="py function">
+<dt id="werobot.logger.enable_pretty_logging">
+<code class="sig-prename descclassname">werobot.logger.</code><code class="sig-name descname">enable_pretty_logging</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logger</span></em>, <em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">'info'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#werobot.logger.enable_pretty_logging" title="永久链接至目标">¶</a></dt>
+<dd><p>按照配置开启 log 的格式化优化。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logger</strong> – 配置的 logger 对象</p></li>
+<li><p><strong>level</strong> – 要为 logger 设置的等级</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <h3><a href="index.html">WeRoBot</a></h3>
+    <a href="http://github.com/offu/WeRoBot" class="sidebar-github-link">
+        <img src="https://img.shields.io/github/stars/offu/WeRoBot.svg?style=social&label=Star&maxAge=2592000" />
+        <img src="https://img.shields.io/github/forks/offu/WeRoBot.svg?style=social&label=Fork&maxAge=2592000" />
+    </a>
+
+    <h3>遇到问题了？</h3>
+    <p>
+        如果你遇到了问题，请去 <a href="https://github.com/whtsky/WeRoBot/issues/new">发 Issue</a>。
+    </p>
+
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">API</a><ul>
+<li><a class="reference internal" href="#module-werobot.robot">应用对象</a></li>
+<li><a class="reference internal" href="#module-werobot.config">配置对象</a></li>
+<li><a class="reference internal" href="#module-werobot.session.sqlitestorage">Session 对象</a></li>
+<li><a class="reference internal" href="#module-werobot.logger">log</a></li>
+</ul>
+</li>
+</ul>
+<h3>导航</h3>
+<ul>
+      <li>上一个主题: <a href="contribution-guide.html" title="上一章">贡献指南</a></li>
+      <li>下一个主题: <a href="changelog.html" title="下一章">Changelog</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+
+    
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2019, offu.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+    
+
+  </body>
+</html>

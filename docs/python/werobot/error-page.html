@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>错误页面 &#8212; WeRoBot 1.13.1 文档</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="小工具" href="utils.html" />
+    <link rel="prev" title="与其他 Web 框架集成" href="contrib.html" />
+     
+    
+        <link rel="apple-touch-icon" href="_static/logo.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head><body>
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="utils.html" title="小工具"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="contrib.html" title="与其他 Web 框架集成"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">WeRoBot 1.13.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">错误页面</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>错误页面<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">WeRoBot</span></code> 自带了一个错误页面，它将会在 Signature 验证不通过的时候返回错误页面。</p>
+<section id="id2">
+<h2>定制错误页面<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>如果你想为 <code class="docutils literal notranslate"><span class="pre">WeRoBot</span></code> 指定 Signature 验证不通过时显示的错误页面，可以这么做:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@robot</span><span class="o">.</span><span class="n">error_page</span>
+<span class="k">def</span> <span class="nf">make_error_page</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;&lt;h1&gt;喵喵喵 </span><span class="si">%s</span><span class="s2"> 不是给麻瓜访问的快走开&lt;/h1&gt;&quot;</span> <span class="o">%</span> <span class="n">url</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <h3><a href="index.html">WeRoBot</a></h3>
+    <a href="http://github.com/offu/WeRoBot" class="sidebar-github-link">
+        <img src="https://img.shields.io/github/stars/offu/WeRoBot.svg?style=social&label=Star&maxAge=2592000" />
+        <img src="https://img.shields.io/github/forks/offu/WeRoBot.svg?style=social&label=Fork&maxAge=2592000" />
+    </a>
+
+    <h3>遇到问题了？</h3>
+    <p>
+        如果你遇到了问题，请去 <a href="https://github.com/whtsky/WeRoBot/issues/new">发 Issue</a>。
+    </p>
+
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">错误页面</a><ul>
+<li><a class="reference internal" href="#id2">定制错误页面</a></li>
+</ul>
+</li>
+</ul>
+<h3>导航</h3>
+<ul>
+      <li>上一个主题: <a href="contrib.html" title="上一章">与其他 Web 框架集成</a></li>
+      <li>下一个主题: <a href="utils.html" title="下一章">小工具</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+
+    
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2019, offu.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+    
+
+  </body>
+</html>

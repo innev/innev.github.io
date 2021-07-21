@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>贡献指南 &#8212; WeRoBot 1.13.1 文档</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="小工具" href="utils.html" />
+     
+    
+        <link rel="apple-touch-icon" href="_static/logo.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head><body>
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="utils.html" title="小工具"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">WeRoBot 1.13.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">贡献指南</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>贡献指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>有许多种为 WeRoBot 做贡献的方式， 包括但并不仅限于</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/whtsky/WeRoBot/issues/new?labels=bug">上报 bug</a></p></li>
+<li><p><a class="reference external" href="https://github.com/whtsky/WeRoBot/issues/new?labels=FeatureRequest">提交 Feature Request</a></p></li>
+<li><p><a class="reference internal" href="#id2"><span class="std std-ref">贡献代码</span></a></p></li>
+<li><p>加入 WeRoBot QQ 群(283206829) 帮助解答问题</p></li>
+<li><p>把 WeRoBot 安利给你周围的人 :)</p></li>
+</ul>
+<section id="id2">
+<h2>贡献代码<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>如果你希望为 WeRoBot 贡献代码， 请现在 GitHub 上 <a class="reference external" href="https://github.com/whtsky/WeRoBot">Fork</a> WeRoBot 仓库， 然后在 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支上开一个新的分支。</p>
+<p>如果你的贡献的代码是修复 Bug ， 请确认这个 Bug 已经有了对应的 Issue （如果没有， 请先创建一个）； 然后在 Pull Request 的描述里面引用这个 Bug 的 Issue ID ， 就像这样(假设 Issue ID 为 153)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fix</span> <span class="c1">#153</span>
+</pre></div>
+</div>
+<section id="id3">
+<h3>环境搭建<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>建议使用 <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> 创建虚拟环境进行开发, 然后安装开发环境需要的 packages。
+关于 Python 版本, 推荐使用 Python 3.6 进行开发。</p>
+<p>如果使用的是 3.x 版本</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python 3.5</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
+</pre></div>
+</div>
+<p>如果是其他版本</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># virtualenv is highly recommended.</span>
+<span class="n">virtualenv</span> <span class="n">venv</span>
+<span class="c1"># Activate virtualenv.</span>
+<span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="c1"># Install dev packages.</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">dev</span><span class="o">-</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>代码风格<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>我们使用 <a class="reference external" href="https://github.com/google/yapf">yapf</a> 进行代码格式化。
+在提交代码之前，请格式化一下你的代码</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install yapf</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">yapf</span>
+<span class="c1"># format code</span>
+<span class="n">yapf</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">r</span> <span class="n">werobot</span><span class="o">/</span> <span class="n">tests</span><span class="o">/</span> <span class="o">*.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>你也可以 <a class="reference external" href="https://github.com/google/yapf/tree/master/plugins#git-pre-commit-hook">安装 yapf Pre-Commit Hook</a> 来自动进行代码格式化工作。</p>
+</section>
+<section id="id5">
+<h3>测试<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>在代码提交之前, 请先运行本地的测试。每次提交之后会有在线的 CI 运行更多版本兼容性的测试, 请密切关注测试结果。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run tests locally.</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">test</span>
+</pre></div>
+</div>
+<p>当然也可以使用 tox 在本地运行多版本的兼容性测试。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run multi-version tests locally.</span>
+<span class="n">tox</span>
+</pre></div>
+</div>
+<p>如果你的 Pull Request 添加了新的模块或者功能，请为这些代码添加必要的测试。 所有的测试文件都在 tests 文件夹下。</p>
+<p>当一切开发完成之后, 可以发 Pull Request 到 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支, 我们会为你的代码做 Review。同时 CI 也会自动运行测试。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>我们只会 Merge 通过了测试的代码。</p>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <h3><a href="index.html">WeRoBot</a></h3>
+    <a href="http://github.com/offu/WeRoBot" class="sidebar-github-link">
+        <img src="https://img.shields.io/github/stars/offu/WeRoBot.svg?style=social&label=Star&maxAge=2592000" />
+        <img src="https://img.shields.io/github/forks/offu/WeRoBot.svg?style=social&label=Fork&maxAge=2592000" />
+    </a>
+
+    <h3>遇到问题了？</h3>
+    <p>
+        如果你遇到了问题，请去 <a href="https://github.com/whtsky/WeRoBot/issues/new">发 Issue</a>。
+    </p>
+
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">贡献指南</a><ul>
+<li><a class="reference internal" href="#id2">贡献代码</a><ul>
+<li><a class="reference internal" href="#id3">环境搭建</a></li>
+<li><a class="reference internal" href="#id4">代码风格</a></li>
+<li><a class="reference internal" href="#id5">测试</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>导航</h3>
+<ul>
+      <li>上一个主题: <a href="utils.html" title="上一章">小工具</a></li>
+      <li>下一个主题: <a href="api.html" title="下一章">API</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+
+    
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2019, offu.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+    
+
+  </body>
+</html>

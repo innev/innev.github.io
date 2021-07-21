@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Handler &#8212; WeRoBot 1.13.1 文档</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Session" href="session.html" />
+    <link rel="prev" title="部署" href="deploy.html" />
+     
+    
+        <link rel="apple-touch-icon" href="_static/logo.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head><body>
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="session.html" title="Session"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="deploy.html" title="部署"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">WeRoBot 1.13.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Handler</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="handler">
+<h1>Handler<a class="headerlink" href="#handler" title="永久链接至标题">¶</a></h1>
+<p>WeRoBot会将合法的请求发送给 handlers 依次执行。</p>
+<p>如果某一个 Handler 返回了非空值， WeRoBot 就会根据这个值创建回复，后面的 handlers 将不会被执行。</p>
+<p>你可以通过修饰符或 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot.add_handler" title="werobot.robot.BaseRoBot.add_handler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_handler()</span></code></a> 添加 handler</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">werobot</span>
+
+<span class="n">robot</span> <span class="o">=</span> <span class="n">werobot</span><span class="o">.</span><span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;tokenhere&#39;</span><span class="p">)</span>
+
+<span class="c1"># 通过修饰符添加handler</span>
+<span class="nd">@robot</span><span class="o">.</span><span class="n">handler</span>
+<span class="k">def</span> <span class="nf">echo</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
+
+<span class="c1"># 通过`add_handler`添加handler</span>
+<span class="k">def</span> <span class="nf">echo</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">echo</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id1">
+<h2>类型过滤<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>在大多数情况下， 一个 Handler 并不能处理所有类型的消息。幸运的是， WeRoBot 可以帮你过滤收到的消息。</p>
+<p>只想处理被新用户关注的消息？:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">werobot</span>
+
+<span class="n">robot</span> <span class="o">=</span> <span class="n">werobot</span><span class="o">.</span><span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;tokenhere&#39;</span><span class="p">)</span>
+
+<span class="nd">@robot</span><span class="o">.</span><span class="n">subscribe</span>
+<span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello My Friend!&#39;</span>
+
+<span class="n">robot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>或者，你的 handler 只能处理文本？</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">werobot</span>
+
+<span class="n">robot</span> <span class="o">=</span> <span class="n">werobot</span><span class="o">.</span><span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;tokenhere&#39;</span><span class="p">)</span>
+
+<span class="nd">@robot</span><span class="o">.</span><span class="n">text</span>
+<span class="k">def</span> <span class="nf">echo</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span>
+
+<span class="n">robot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>在 WeRobot 中我们把请求分成了 Message 和 Event 两种类型,针对两种类型的请求分别有不同的 Handler。</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 71%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>修饰符</p></th>
+<th class="head"><p>类型</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.text" title="werobot.robot.BaseRoBot.text"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.text</span></code></a></p></td>
+<td><p>文本 (Message)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.image" title="werobot.robot.BaseRoBot.image"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.image</span></code></a></p></td>
+<td><p>图像 (Message)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.location" title="werobot.robot.BaseRoBot.location"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.location</span></code></a></p></td>
+<td><p>位置 (Message)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.link" title="werobot.robot.BaseRoBot.link"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.link</span></code></a></p></td>
+<td><p>链接 (Message)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.voice" title="werobot.robot.BaseRoBot.voice"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.voice</span></code></a></p></td>
+<td><p>语音 (Message)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.unknown" title="werobot.robot.BaseRoBot.unknown"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.unknown</span></code></a></p></td>
+<td><p>未知类型 (Message)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.subscribe" title="werobot.robot.BaseRoBot.subscribe"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.subscribe</span></code></a></p></td>
+<td><p>被关注 (Event)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.unsubscribe" title="werobot.robot.BaseRoBot.unsubscribe"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.unsubscribe</span></code></a></p></td>
+<td><p>被取消关注 (Event)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.click" title="werobot.robot.BaseRoBot.click"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.click</span></code></a></p></td>
+<td><p>自定义菜单事件 (Event)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.view" title="werobot.robot.BaseRoBot.view"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.view</span></code></a></p></td>
+<td><p>链接 (Event)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.scancode_push" title="werobot.robot.BaseRoBot.scancode_push"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.scancode_push</span></code></a></p></td>
+<td><p>扫描推送 (Event)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.scancode_waitmsg" title="werobot.robot.BaseRoBot.scancode_waitmsg"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.scancode_waitmsg</span></code></a></p></td>
+<td><p>扫描弹消息 (Event)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.pic_sysphoto" title="werobot.robot.BaseRoBot.pic_sysphoto"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.pic_sysphoto</span></code></a></p></td>
+<td><p>弹出系统拍照发图（Event）</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.pic_photo_or_album" title="werobot.robot.BaseRoBot.pic_photo_or_album"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.pic_photo_or_album</span></code></a></p></td>
+<td><p>弹出拍照或者相册发图（Event）</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.pic_weixin" title="werobot.robot.BaseRoBot.pic_weixin"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.pic_weixin</span></code></a></p></td>
+<td><p>弹出微信相册发图器（Event）</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.location_select" title="werobot.robot.BaseRoBot.location_select"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.location_select</span></code></a></p></td>
+<td><p>弹出地理位置选择器（Event）</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.scan" title="werobot.robot.BaseRoBot.scan"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.scan</span></code></a></p></td>
+<td><p>已关注扫描二维码（Event）</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.user_scan_product" title="werobot.robot.BaseRoBot.user_scan_product"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.user_scan_product</span></code></a></p></td>
+<td><p>打开商品主页事件推送（Event）</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.user_scan_product_enter_session" title="werobot.robot.BaseRoBot.user_scan_product_enter_session"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.user_scan_product_enter_session</span></code></a></p></td>
+<td><p>进入公众号事件推送（Event）</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.user_scan_product_async" title="werobot.robot.BaseRoBot.user_scan_product_async"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.user_scan_product_async</span></code></a></p></td>
+<td><p>地理位置信息异步推送（Event)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.user_scan_product_verify_action" title="werobot.robot.BaseRoBot.user_scan_product_verify_action"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.user_scan_product_verify_action</span></code></a></p></td>
+<td><p>商品审核结果推送（Event）</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.card_pass_check" title="werobot.robot.BaseRoBot.card_pass_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.card_pass_check</span></code></a></p></td>
+<td><p>卡券通过审核 (Event)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.card_not_pass_check" title="werobot.robot.BaseRoBot.card_not_pass_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.card_not_pass_check</span></code></a></p></td>
+<td><p>卡券未通过审核 (Event)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.user_get_card" title="werobot.robot.BaseRoBot.user_get_card"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.user_get_card</span></code></a></p></td>
+<td><p>用户领取卡券 (Event)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.user_gifting_card" title="werobot.robot.BaseRoBot.user_gifting_card"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.user_gifting_card</span></code></a></p></td>
+<td><p>用户转赠卡券 (Event)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.user_del_card" title="werobot.robot.BaseRoBot.user_del_card"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.user_del_card</span></code></a></p></td>
+<td><p>用户删除卡券 (Event)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.user_consume_card" title="werobot.robot.BaseRoBot.user_consume_card"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.user_consume_card</span></code></a></p></td>
+<td><p>卡券被核销 (Event)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.user_pay_from_pay_cell" title="werobot.robot.BaseRoBot.user_pay_from_pay_cell"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.user_pay_from_pay_cell</span></code></a></p></td>
+<td><p>微信买单完成 (Event)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.user_view_card" title="werobot.robot.BaseRoBot.user_view_card"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.user_view_card</span></code></a></p></td>
+<td><p>用户进入会员卡 (Event)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.user_enter_session_from_card" title="werobot.robot.BaseRoBot.user_enter_session_from_card"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.user_enter_session_from_card</span></code></a></p></td>
+<td><p>用户卡券里点击查看公众号进入会话 (Event)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.update_member_card" title="werobot.robot.BaseRoBot.update_member_card"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.update_member_card</span></code></a></p></td>
+<td><p>会员卡积分余额发生变动 (Event)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.card_sku_remind" title="werobot.robot.BaseRoBot.card_sku_remind"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.card_sku_remind</span></code></a></p></td>
+<td><p>库存警告 (Event)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.card_pay_order" title="werobot.robot.BaseRoBot.card_pay_order"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.card_pay_order</span></code></a></p></td>
+<td><p>券点发生变动 (Event)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.templatesendjobfinish_event" title="werobot.robot.BaseRoBot.templatesendjobfinish_event"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.templatesendjobfinish_event</span></code></a></p></td>
+<td><p>模板信息推送事件 (Event)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.submit_membercard_user_info" title="werobot.robot.BaseRoBot.submit_membercard_user_info"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.submit_membercard_user_info</span></code></a></p></td>
+<td><p>激活卡券 (Event)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.location_event" title="werobot.robot.BaseRoBot.location_event"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.location_event</span></code></a></p></td>
+<td><p>上报位置 (Event)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.unknown_event" title="werobot.robot.BaseRoBot.unknown_event"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.unknown_event</span></code></a></p></td>
+<td><p>未知类型 (Event)</p></td>
+</tr>
+</tbody>
+</table>
+<p>额，这个 handler 想处理文本信息和地理位置信息？</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">werobot</span>
+
+<span class="n">robot</span> <span class="o">=</span> <span class="n">werobot</span><span class="o">.</span><span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;tokenhere&#39;</span><span class="p">)</span>
+
+<span class="nd">@robot</span><span class="o">.</span><span class="n">text</span>
+<span class="nd">@robot</span><span class="o">.</span><span class="n">location</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="c1"># Do what you love to do</span>
+    <span class="k">pass</span>
+
+<span class="n">robot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>当然，你也可以用 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot.add_handler" title="werobot.robot.BaseRoBot.add_handler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_handler()</span></code></a> 函数添加handler，就像这样:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">werobot</span>
+
+<span class="n">robot</span> <span class="o">=</span> <span class="n">werobot</span><span class="o">.</span><span class="n">WeRoBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s1">&#39;tokenhere&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="c1"># Do what you love to do</span>
+    <span class="k">pass</span>
+
+<span class="n">robot</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">)</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;location&#39;</span><span class="p">)</span>
+
+<span class="n">robot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>通过 <code class="docutils literal notranslate"><span class="pre">robot.handler</span></code> 添加的 handler 将收到所有信息；只有在其他 handler 没有给出返回值的情况下， 通过 <code class="docutils literal notranslate"><span class="pre">robot.handler</span></code> 添加的 handler 才会被调用。</p>
+</div>
+</section>
+<section id="robot-key-click">
+<h2>robot.key_click —— 回应自定义菜单<a class="headerlink" href="#robot-key-click" title="永久链接至标题">¶</a></h2>
+<p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.key_click" title="werobot.robot.BaseRoBot.key_click"><code class="xref py py-meth docutils literal notranslate"><span class="pre">key_click()</span></code></a> 是对 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot.click" title="werobot.robot.BaseRoBot.click"><code class="xref py py-meth docutils literal notranslate"><span class="pre">click()</span></code></a> 修饰符的改进。</p>
+<p>如果你在自定义菜单中定义了一个 Key 为 <code class="docutils literal notranslate"><span class="pre">abort</span></code> 的菜单，响应这个菜单的 handler 可以写成这样</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@robot</span><span class="o">.</span><span class="n">key_click</span><span class="p">(</span><span class="s2">&quot;abort&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">abort</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;I&#39;m a robot&quot;</span>
+</pre></div>
+</div>
+<p>当然，如果你不喜欢用 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot.key_click" title="werobot.robot.BaseRoBot.key_click"><code class="xref py py-meth docutils literal notranslate"><span class="pre">key_click()</span></code></a> ，也可以写成这样</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@robot</span><span class="o">.</span><span class="n">click</span>
+<span class="k">def</span> <span class="nf">abort</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;abort&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;I&#39;m a robot&quot;</span>
+</pre></div>
+</div>
+<p>两者是等价的。</p>
+</section>
+<section id="robot-filter">
+<h2>robot.filter ——  回应有指定文本的消息<a class="headerlink" href="#robot-filter" title="永久链接至标题">¶</a></h2>
+<p><a class="reference internal" href="api.html#werobot.robot.BaseRoBot.filter" title="werobot.robot.BaseRoBot.filter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter()</span></code></a> 是对 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot.text" title="werobot.robot.BaseRoBot.text"><code class="xref py py-meth docutils literal notranslate"><span class="pre">text()</span></code></a> 修饰符的改进。</p>
+<p>现在你可以写这样的代码</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@robot</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">a</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;正文为 a &quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+
+<span class="nd">@robot</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;.*?bb.*?&quot;</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">b</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;正文中含有 bb &quot;</span>
+
+<span class="nd">@robot</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;.*?c.*?&quot;</span><span class="p">),</span> <span class="s2">&quot;d&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">c</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;正文中含有 c 或正文为 d&quot;</span>
+
+<span class="nd">@robot</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(.*)?e(.*)?&quot;</span><span class="p">),</span> <span class="s2">&quot;f&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">d</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">match</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;正文为 &quot;</span> <span class="o">+</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;e&quot;</span> <span class="o">+</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;正文为 f&quot;</span>
+</pre></div>
+</div>
+<p>这段代码等价于</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@robot</span><span class="o">.</span><span class="n">text</span>
+<span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="s2">&quot;a&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;正文为 a &quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+
+<span class="nd">@robot</span><span class="o">.</span><span class="n">text</span>
+<span class="k">def</span> <span class="nf">b</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;.*?bb.*?&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;正文中含有 b &quot;</span>
+
+<span class="nd">@robot</span><span class="o">.</span><span class="n">text</span>
+<span class="k">def</span> <span class="nf">c</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;.*?c.*?&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="ow">or</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="s2">&quot;d&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;正文中含有 c 或正文为 d&quot;</span>
+
+<span class="nd">@robot</span><span class="o">.</span><span class="n">text</span>
+<span class="k">def</span> <span class="nf">d</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(.*)?e(.*)?&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;正文为 &quot;</span> <span class="o">+</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;e&quot;</span> <span class="o">+</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span>  <span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="s2">&quot;f&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;正文为 f&quot;</span>
+</pre></div>
+</div>
+<p>如果你想通过修饰符以外的方法添加 filter，可以使用 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot.add_filter" title="werobot.robot.BaseRoBot.add_filter"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_filter()</span></code></a> 方法</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">say_hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;hello!&quot;</span>
+
+<span class="n">robot</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">say_hello</span><span class="p">,</span> <span class="n">rules</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;.*?hello.*?&quot;</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>更多内容详见 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot" title="werobot.robot.BaseRoBot"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.robot.BaseRoBot</span></code></a></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <h3><a href="index.html">WeRoBot</a></h3>
+    <a href="http://github.com/offu/WeRoBot" class="sidebar-github-link">
+        <img src="https://img.shields.io/github/stars/offu/WeRoBot.svg?style=social&label=Star&maxAge=2592000" />
+        <img src="https://img.shields.io/github/forks/offu/WeRoBot.svg?style=social&label=Fork&maxAge=2592000" />
+    </a>
+
+    <h3>遇到问题了？</h3>
+    <p>
+        如果你遇到了问题，请去 <a href="https://github.com/whtsky/WeRoBot/issues/new">发 Issue</a>。
+    </p>
+
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Handler</a><ul>
+<li><a class="reference internal" href="#id1">类型过滤</a></li>
+<li><a class="reference internal" href="#robot-key-click">robot.key_click —— 回应自定义菜单</a></li>
+<li><a class="reference internal" href="#robot-filter">robot.filter ——  回应有指定文本的消息</a></li>
+</ul>
+</li>
+</ul>
+<h3>导航</h3>
+<ul>
+      <li>上一个主题: <a href="deploy.html" title="上一章">部署</a></li>
+      <li>下一个主题: <a href="session.html" title="下一章">Session</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+
+    
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2019, offu.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+    
+
+  </body>
+</html>

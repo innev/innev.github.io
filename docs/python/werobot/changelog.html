@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Changelog &#8212; WeRoBot 1.13.1 文档</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="prev" title="API" href="api.html" />
+     
+    
+        <link rel="apple-touch-icon" href="_static/logo.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head><body>
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">WeRoBot 1.13.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Changelog</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="永久链接至标题">¶</a></h1>
+<section id="version-1-13-1">
+<h2>Version 1.13.1<a class="headerlink" href="#version-1-13-1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>更新了部分依赖。</p></li>
+</ul>
+</section>
+<section id="version-1-13-0">
+<h2>Version 1.13.0<a class="headerlink" href="#version-1-13-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>停止了对 Django 1.11、Django 2.0 的测试</p></li>
+<li><p>增加了对 Django 2.2、 Django 3.0、 Django 3.1 的测试</p></li>
+<li><p>停止了对 Python 3.4、 Python 3.5 的测试</p></li>
+<li><p>增加了对 Python 3.9 的测试</p></li>
+<li><p><a class="reference internal" href="client.html#werobot.client.Client.send_template_message" title="werobot.client.Client.send_template_message"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.send_template_message()</span></code></a> 添加跳转小程序 ( <a class="reference external" href="https://github.com/offu/WeRoBot/pull/604">#604</a> )</p></li>
+</ul>
+</section>
+<section id="version-1-12-0">
+<h2>Version 1.12.0<a class="headerlink" href="#version-1-12-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>增加了对微信模板回调消息的处理 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot.templatesendjobfinish_event" title="werobot.robot.BaseRoBot.templatesendjobfinish_event"><code class="xref py py-func docutils literal notranslate"><span class="pre">robot.templatesendjobfinish_event</span></code></a>  ( <a class="reference external" href="https://github.com/offu/WeRoBot/pull/544">#544</a> )</p></li>
+</ul>
+</section>
+<section id="version-1-11-0">
+<h2>Version 1.11.0<a class="headerlink" href="#version-1-11-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>停止了对 Python2 与 PyPy 的支持。 ( <a class="reference external" href="https://github.com/offu/WeRoBot/pull/539">#539</a> )</p></li>
+<li><p>停止了对 SAE 相关代码的测试。 ( <a class="reference external" href="https://github.com/offu/WeRoBot/pull/539">#539</a> )</p></li>
+</ul>
+</section>
+<section id="version-1-10-1">
+<h2>Version 1.10.1<a class="headerlink" href="#version-1-10-1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>修复 <a class="reference internal" href="client.html#id11"><span class="std std-ref">群发接口</span></a> 的 docstring 样式。</p></li>
+</ul>
+</section>
+<section id="version-1-10-0">
+<h2>Version 1.10.0<a class="headerlink" href="#version-1-10-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>在 Client 中增加对 <a class="reference internal" href="client.html#id25"><span class="std std-ref">上传图文消息素材</span></a> 的支持  ( <a class="reference external" href="https://github.com/offu/WeRoBot/pull/493">#493</a> )</p></li>
+<li><p>在 Client 中增加对 <a class="reference internal" href="client.html#id11"><span class="std std-ref">群发接口</span></a> 的支持  ( <a class="reference external" href="https://github.com/offu/WeRoBot/pull/493">#493</a> )</p></li>
+</ul>
+</section>
+<section id="version-1-9-0">
+<h2>Version 1.9.0<a class="headerlink" href="#version-1-9-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>在 Client 中增加对 <a class="reference internal" href="client.html#id29"><span class="std std-ref">用户标签管理</span></a> 的支持 ( <a class="reference external" href="https://github.com/offu/WeRoBot/pull/426">#426</a> )</p></li>
+</ul>
+</section>
+<section id="version-1-8-0">
+<h2>Version 1.8.0<a class="headerlink" href="#version-1-8-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>增加 <a class="reference internal" href="api.html#werobot.session.postgresqlstorage.PostgreSQLStorage" title="werobot.session.postgresqlstorage.PostgreSQLStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.session.postgresqlstorage.PostgreSQLStorage</span></code></a> (<a class="reference external" href="https://github.com/offu/WeRoBot/issues/383">#383</a>) (<a class="reference external" href="https://github.com/offu/WeRoBot/pull/412">#412</a>)</p></li>
+<li><p>修复 imp 在 Python3.4 后被废弃的问题 (<a class="reference external" href="https://github.com/offu/WeRoBot/pull/411">#411</a>)</p></li>
+</ul>
+</section>
+<section id="version-1-7-0">
+<h2>Version 1.7.0<a class="headerlink" href="#version-1-7-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>为  <a class="reference internal" href="client.html#werobot.client.Client.send_text_message" title="werobot.client.Client.send_text_message"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.send_text_message()</span></code></a>，<a class="reference internal" href="client.html#werobot.client.Client.send_image_message" title="werobot.client.Client.send_image_message"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.send_image_message()</span></code></a>，<a class="reference internal" href="client.html#werobot.client.Client.send_voice_message" title="werobot.client.Client.send_voice_message"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.send_voice_message()</span></code></a>，<a class="reference internal" href="client.html#werobot.client.Client.send_video_message" title="werobot.client.Client.send_video_message"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.send_video_message()</span></code></a>，<a class="reference internal" href="client.html#werobot.client.Client.send_music_message" title="werobot.client.Client.send_music_message"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.send_music_message()</span></code></a>，<a class="reference internal" href="client.html#werobot.client.Client.send_article_message" title="werobot.client.Client.send_article_message"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.send_article_message()</span></code></a>，<a class="reference internal" href="client.html#werobot.client.Client.send_news_message" title="werobot.client.Client.send_news_message"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.send_news_message()</span></code></a> 加入 <code class="docutils literal notranslate"><span class="pre">kf_account</span></code> 参数 ( <a class="reference external" href="https://github.com/offu/WeRoBot/issues/384">#384</a> )</p></li>
+<li><p>将  <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.replies.TransferCustomerServiceReply</span></code> 的 <code class="docutils literal notranslate"><span class="pre">account</span></code> 改为非必需 ( <a class="reference external" href="https://github.com/offu/WeRoBot/issues/363">#363</a> )</p></li>
+</ul>
+</section>
+<section id="version-1-6-0">
+<h2>Version 1.6.0<a class="headerlink" href="#version-1-6-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>增加对发送小程序卡片的支持： <a class="reference internal" href="client.html#werobot.client.Client.send_miniprogrampage_message" title="werobot.client.Client.send_miniprogrampage_message"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.send_miniprogrampage_message()</span></code></a> ( <a class="reference external" href="https://github.com/offu/WeRoBot/pull/309">#309</a> by <a class="reference external" href="https://github.com/helloqiu">&#64;helloqiu</a>)</p></li>
+</ul>
+</section>
+<section id="version-1-5-0">
+<h2>Version 1.5.0<a class="headerlink" href="#version-1-5-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>为正则匹配的 handler 加入匹配后的 <code class="docutils literal notranslate"><span class="pre">Match</span> <span class="pre">Object</span></code> 作为参数(<a class="reference external" href="https://github.com/offu/WeRoBot/pull/305">#305</a>)(<a class="reference external" href="https://github.com/cxgreat2014">Author: cxgreat2014</a>)</p></li>
+</ul>
+</section>
+<section id="version-1-4-1">
+<h2>Version 1.4.1<a class="headerlink" href="#version-1-4-1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>修复 <code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.post()</span></code> 中文文件名的 bug (<a class="reference external" href="https://github.com/offu/WeRoBot/issues/292">#292</a>)</p></li>
+</ul>
+</section>
+<section id="version-1-4-0">
+<h2>Version 1.4.0<a class="headerlink" href="#version-1-4-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.CardPassCheckEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.CardNotPassCheckEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.UserGetCardEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.UserGiftingCardEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.UserDelCardEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.UserConsumeCardEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.UserPayFromPayCellEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.UserViewCardEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.UserEnterSessionFromCardEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.UpdateMemberCardEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.CardSkuRemindEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.CardPayOrderEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.SubmitMembercardUserInfoEvent</span></code></p></li>
+</ul>
+</section>
+<section id="version-1-3-0">
+<h2>Version 1.3.0<a class="headerlink" href="#version-1-3-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.UserScanProductEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.UserScanProductEnterSessionEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.UserScanProductAsyncEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.UserScanProductVerifyActionEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.PicSysphotoEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.PicPhotoOrAlbumEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.PicWeixinEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.LocationSelectEvent</span></code></p></li>
+</ul>
+</section>
+<section id="version-1-2-0">
+<h2>Version 1.2.0<a class="headerlink" href="#version-1-2-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>增加 <a class="reference internal" href="api.html#werobot.session.mysqlstorage.MySQLStorage" title="werobot.session.mysqlstorage.MySQLStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.session.mysqlstorage.MySQLStorage</span></code></a></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.ScanCodePushEvent</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.messages.events.ScanCodeWaitMsgEvent</span></code></p></li>
+<li><p>增加 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot.add_filter" title="werobot.robot.BaseRoBot.add_filter"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.robot.BaseRoBot.add_filter()</span></code></a></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.utils.generate_token()</span></code> 在 Python 3.6+ 下优先使用 <code class="docutils literal notranslate"><span class="pre">secrets.choice</span></code> 来随机生成 token</p></li>
+<li><p>修复 <a class="reference internal" href="client.html#werobot.client.Client.get_media_list" title="werobot.client.Client.get_media_list"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.get_media_list()</span></code></a> 的调用参数错误 (<a class="reference external" href="https://github.com/whtsky/WeRoBot/issues/208">#208</a>)</p></li>
+<li><p>修复了某些情况下 Client 中文编码不正确的问题 (<a class="reference external" href="https://github.com/whtsky/WeRoBot/issues/250">#250</a>)</p></li>
+<li><p>Handler 中的 Exception 现在会以 Error level 记录到 logger 中</p></li>
+<li><p>在文档中增加了独立的 <a class="reference internal" href="api.html"><span class="doc">API</span></a> 部分</p></li>
+<li><p>添加了 <code class="docutils literal notranslate"><span class="pre">video</span></code> 和 <code class="docutils literal notranslate"><span class="pre">shortvideo</span></code> 的修饰器</p></li>
+<li><p>增加了 <a class="reference internal" href="api.html#werobot.session.saekvstorage.SaeKVDBStorage" title="werobot.session.saekvstorage.SaeKVDBStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.session.saekvstorage.SaeKVDBStorage</span></code></a> 的测试</p></li>
+<li><p>增加了对 Django 2.0 的测试</p></li>
+<li><p>抛弃对 Django &lt; 1.8 、 Django 1.9 、 Django 1.10 的支持</p></li>
+</ul>
+</section>
+<section id="version-1-1-1">
+<h2>Version 1.1.1<a class="headerlink" href="#version-1-1-1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>修复 <a class="reference internal" href="client.html#werobot.client.Client.create_menu" title="werobot.client.Client.create_menu"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.create_menu()</span></code></a> 文档中的错误</p></li>
+<li><p>在 <a class="reference internal" href="client.html#werobot.client.Client.send_music_message" title="werobot.client.Client.send_music_message"><code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.client.Client.send_music_message()</span></code></a> 的文档中提示了可能的缩略图不显示的问题</p></li>
+</ul>
+</section>
+<section id="version-1-1-0">
+<h2>Version 1.1.0<a class="headerlink" href="#version-1-1-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>为 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot" title="werobot.robot.BaseRoBot"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.robot.BaseRoBot</span></code></a> 增加 <code class="docutils literal notranslate"><span class="pre">client</span></code> property</p></li>
+<li><p>允许在初始化 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot" title="werobot.robot.BaseRoBot"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.robot.BaseRoBot</span></code></a> 时传入 <a class="reference internal" href="config.html"><span class="doc">Config</span></a> 。注意如果传入了 config ， BaseRoBot 会忽略除 <code class="docutils literal notranslate"><span class="pre">config</span></code> 与 <code class="docutils literal notranslate"><span class="pre">logger</span></code> 外的其他所有的参数。</p></li>
+<li><p>deprecate <a class="reference internal" href="api.html#werobot.robot.BaseRoBot" title="werobot.robot.BaseRoBot"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.robot.BaseRoBot</span></code></a> 的 <code class="docutils literal notranslate"><span class="pre">enable_session</span></code> 参数</p></li>
+<li><p>Session Storage 现在是惰性加载的了； 如果希望关闭 Session ， 请将 <a class="reference internal" href="config.html"><span class="doc">Config</span></a> 中的 <code class="docutils literal notranslate"><span class="pre">SESSION_STORAGE</span></code> 设为 <code class="docutils literal notranslate"><span class="pre">False</span></code> (<a class="reference external" href="https://github.com/whtsky/WeRoBot/issues/189">#189</a>)</p></li>
+<li><p>修复了打包时 <cite>error.html</cite> 被忽略导致的默认错误页面错误的问题 (<a class="reference external" href="https://github.com/whtsky/WeRoBot/issues/194">#194</a>)</p></li>
+<li><p>允许使用 <code class="docutils literal notranslate"><span class="pre">reply.time</span></code> 的方式快速读取 Reply 属性</p></li>
+<li><p>完善 <a class="reference internal" href="client.html"><span class="doc">WeRoBot.Client —— 微信 API 操作类</span></a> 中自定义菜单、消息管理、素材管理、用户管理、账户管理、素材管理部分的 <cite>API</cite></p></li>
+<li><p>修复了直接 GET 访问 Robot 主页返回 500 的问题</p></li>
+</ul>
+</section>
+<section id="version-1-0-0">
+<h2>Version 1.0.0<a class="headerlink" href="#version-1-0-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>增加对消息加解密的支持</p></li>
+<li><p>重写 werobot.messages, 完善对 Event 的支持</p></li>
+<li><p>将微信消息的 <cite>id</cite> 属性重命名为 <cite>message_id</cite></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.reply.SuccessReply</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.reply.ImageReply</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.reply.VoiceReply</span></code></p></li>
+<li><p>增加 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.reply.VideoReply</span></code></p></li>
+<li><p>删除 <code class="xref py py-func docutils literal notranslate"><span class="pre">werobot.reply.create_reply()</span></code></p></li>
+<li><p>为 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.reply.WeChatReply</span></code> 增加 <code class="docutils literal notranslate"><span class="pre">process_args</span></code> 方法</p></li>
+<li><p>为 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot" title="werobot.robot.BaseRoBot"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.robot.BaseRoBot</span></code></a> 增加 <code class="docutils literal notranslate"><span class="pre">parse_message</span></code> 方法</p></li>
+<li><p>为 <a class="reference internal" href="api.html#werobot.robot.BaseRoBot" title="werobot.robot.BaseRoBot"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.robot.BaseRoBot</span></code></a> 增加 <code class="docutils literal notranslate"><span class="pre">get_encrypted_reply</span></code> 方法</p></li>
+<li><p>删去了 Reply 中过时的 flag</p></li>
+<li><p>修复 <a class="reference internal" href="api.html#werobot.session.filestorage.FileStorage" title="werobot.session.filestorage.FileStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.session.filestorage.FileStorage</span></code></a> 在 PyPy 下的兼容性问题</p></li>
+<li><p>增加 <a class="reference internal" href="api.html#werobot.session.sqlitestorage.SQLiteStorage" title="werobot.session.sqlitestorage.SQLiteStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.session.sqlitestorage.SQLiteStorage</span></code></a></p></li>
+<li><p>将默认的 SessionBackend 切换为 <a class="reference internal" href="api.html#werobot.session.sqlitestorage.SQLiteStorage" title="werobot.session.sqlitestorage.SQLiteStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.session.sqlitestorage.SQLiteStorage</span></code></a></p></li>
+<li><p>将图文消息单个消息的渲染函数放到 <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.replies.Article</span></code> 内</p></li>
+<li><p>取消对 Python2.6, Python3.3 的支持</p></li>
+<li><p>增加与 Django 1.6+, Flask, Bottle, Tornado 集成的支持</p></li>
+<li><p>替换 <cite>inspect.getargspec()</cite></p></li>
+</ul>
+</section>
+<section id="version-0-6-1">
+<h2>Version 0.6.1<a class="headerlink" href="#version-0-6-1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Fix wrong URL in <code class="docutils literal notranslate"><span class="pre">upload_media</span></code></p></li>
+<li><p>Add VideoMessage</p></li>
+</ul>
+</section>
+<section id="version-0-6-0">
+<h2>Version 0.6.0<a class="headerlink" href="#version-0-6-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">&#64;werobot.filter</span></code></p></li>
+<li><p>Add <a class="reference internal" href="api.html#module-werobot.session.saekvstorage" title="werobot.session.saekvstorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.session.saekvstorage</span></code></a></p></li>
+<li><p>Add support for Weixin Pay ( <code class="xref py py-class docutils literal notranslate"><span class="pre">werobot.pay.WeixinPayClient</span></code> )</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">werobot.reply.TransferCustomerServiceReply</span></code></p></li>
+<li><p>Fix FileStorage’s bug</p></li>
+</ul>
+</section>
+<section id="version-0-5-3">
+<h2>Version 0.5.3<a class="headerlink" href="#version-0-5-3" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Fix: can’t handle request for root path</p></li>
+</ul>
+</section>
+<section id="version-0-5-2">
+<h2>Version 0.5.2<a class="headerlink" href="#version-0-5-2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Fix Python 3 support</p></li>
+</ul>
+</section>
+<section id="version-0-5-1">
+<h2>Version 0.5.1<a class="headerlink" href="#version-0-5-1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Fix typo</p></li>
+</ul>
+</section>
+<section id="version-0-5-0">
+<h2>Version 0.5.0<a class="headerlink" href="#version-0-5-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">werobot.client</span></code></p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">werobot.config</span></code></p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">werobot.logger</span></code></p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">&#64;werobot.key_click</span></code> (Thanks &#64;tg123)</p></li>
+<li><p>Support Location Event</p></li>
+<li><p>Use smart args</p></li>
+<li><p>Friendly 403 page</p></li>
+<li><p>Improved server support</p></li>
+<li><p>Enable session by default.</p></li>
+<li><p>Drop <code class="docutils literal notranslate"><span class="pre">werobot.testing.make_text_message</span></code></p></li>
+<li><p>Drop <code class="docutils literal notranslate"><span class="pre">werobot.testing.make_image_message</span></code></p></li>
+<li><p>Drop <code class="docutils literal notranslate"><span class="pre">werobot.testing.make_location_message</span></code></p></li>
+<li><p>Drop <code class="docutils literal notranslate"><span class="pre">werobot.testing.make_voice_message</span></code></p></li>
+<li><p>Drop <code class="docutils literal notranslate"><span class="pre">werobot.testing.WeTest.send</span></code></p></li>
+<li><p>Rewrite <code class="docutils literal notranslate"><span class="pre">werobot.message</span></code></p></li>
+<li><p>Rewrite testing case</p></li>
+</ul>
+</section>
+<section id="version-0-4-1">
+<h2>Version 0.4.1<a class="headerlink" href="#version-0-4-1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Add VoiceMessage</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">message.raw</span></code>: Raw XML of message</p></li>
+<li><p>Rename <code class="docutils literal notranslate"><span class="pre">UnknownMessage.content</span></code> to <code class="docutils literal notranslate"><span class="pre">UnknownMessage.raw</span></code></p></li>
+<li><p>Fix a bug when signature is invalid.</p></li>
+<li><p>Ignore session when receive UnknownMessage</p></li>
+</ul>
+</section>
+<section id="version-0-4-0">
+<h2>Version 0.4.0<a class="headerlink" href="#version-0-4-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Add session support</p></li>
+<li><p>Add logging support</p></li>
+<li><p>Rename <code class="docutils literal notranslate"><span class="pre">werobot.test</span></code> to <code class="docutils literal notranslate"><span class="pre">werobot.testing</span></code></p></li>
+<li><p>Handlers added by <code class="docutils literal notranslate"><span class="pre">&#64;robot.handler</span></code> will have the lowest priority.</p></li>
+</ul>
+</section>
+<section id="version-0-3-5">
+<h2>Version 0.3.5<a class="headerlink" href="#version-0-3-5" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Bug fix: Make <code class="docutils literal notranslate"><span class="pre">BaseRoBot</span></code> importable</p></li>
+</ul>
+</section>
+<section id="version-0-3-4">
+<h2>Version 0.3.4<a class="headerlink" href="#version-0-3-4" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Rename <code class="docutils literal notranslate"><span class="pre">WeRoBot.app</span></code> to <code class="docutils literal notranslate"><span class="pre">WeRoBot.wsgi</span></code></p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">BaseRoBot</span></code> class. It’s useful for creating extensions.</p></li>
+<li><p>Reorganized documents.</p></li>
+</ul>
+</section>
+<section id="version-0-3-3">
+<h2>Version 0.3.3<a class="headerlink" href="#version-0-3-3" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">host</span></code> param in werobot.run</p></li>
+<li><p>Update EventMessage</p></li>
+<li><p>Add LinkMessage</p></li>
+</ul>
+</section>
+<section id="version-0-3-2">
+<h2>Version 0.3.2<a class="headerlink" href="#version-0-3-2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Convert all arguments to unicode in Python 2 ( See issue <a class="reference external" href="https://github.com/whtsky/WeRoBot/pull/1">#1</a> )</p></li>
+</ul>
+</section>
+<section id="version-0-3-1">
+<h2>Version 0.3.1<a class="headerlink" href="#version-0-3-1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">server</span></code> param in werobot.run</p></li>
+</ul>
+</section>
+<section id="version-0-3-0">
+<h2>Version 0.3.0<a class="headerlink" href="#version-0-3-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Add new messages and replies support for WeChat 4.5</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <h3><a href="index.html">WeRoBot</a></h3>
+    <a href="http://github.com/offu/WeRoBot" class="sidebar-github-link">
+        <img src="https://img.shields.io/github/stars/offu/WeRoBot.svg?style=social&label=Star&maxAge=2592000" />
+        <img src="https://img.shields.io/github/forks/offu/WeRoBot.svg?style=social&label=Fork&maxAge=2592000" />
+    </a>
+
+    <h3>遇到问题了？</h3>
+    <p>
+        如果你遇到了问题，请去 <a href="https://github.com/whtsky/WeRoBot/issues/new">发 Issue</a>。
+    </p>
+
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Changelog</a><ul>
+<li><a class="reference internal" href="#version-1-13-1">Version 1.13.1</a></li>
+<li><a class="reference internal" href="#version-1-13-0">Version 1.13.0</a></li>
+<li><a class="reference internal" href="#version-1-12-0">Version 1.12.0</a></li>
+<li><a class="reference internal" href="#version-1-11-0">Version 1.11.0</a></li>
+<li><a class="reference internal" href="#version-1-10-1">Version 1.10.1</a></li>
+<li><a class="reference internal" href="#version-1-10-0">Version 1.10.0</a></li>
+<li><a class="reference internal" href="#version-1-9-0">Version 1.9.0</a></li>
+<li><a class="reference internal" href="#version-1-8-0">Version 1.8.0</a></li>
+<li><a class="reference internal" href="#version-1-7-0">Version 1.7.0</a></li>
+<li><a class="reference internal" href="#version-1-6-0">Version 1.6.0</a></li>
+<li><a class="reference internal" href="#version-1-5-0">Version 1.5.0</a></li>
+<li><a class="reference internal" href="#version-1-4-1">Version 1.4.1</a></li>
+<li><a class="reference internal" href="#version-1-4-0">Version 1.4.0</a></li>
+<li><a class="reference internal" href="#version-1-3-0">Version 1.3.0</a></li>
+<li><a class="reference internal" href="#version-1-2-0">Version 1.2.0</a></li>
+<li><a class="reference internal" href="#version-1-1-1">Version 1.1.1</a></li>
+<li><a class="reference internal" href="#version-1-1-0">Version 1.1.0</a></li>
+<li><a class="reference internal" href="#version-1-0-0">Version 1.0.0</a></li>
+<li><a class="reference internal" href="#version-0-6-1">Version 0.6.1</a></li>
+<li><a class="reference internal" href="#version-0-6-0">Version 0.6.0</a></li>
+<li><a class="reference internal" href="#version-0-5-3">Version 0.5.3</a></li>
+<li><a class="reference internal" href="#version-0-5-2">Version 0.5.2</a></li>
+<li><a class="reference internal" href="#version-0-5-1">Version 0.5.1</a></li>
+<li><a class="reference internal" href="#version-0-5-0">Version 0.5.0</a></li>
+<li><a class="reference internal" href="#version-0-4-1">Version 0.4.1</a></li>
+<li><a class="reference internal" href="#version-0-4-0">Version 0.4.0</a></li>
+<li><a class="reference internal" href="#version-0-3-5">Version 0.3.5</a></li>
+<li><a class="reference internal" href="#version-0-3-4">Version 0.3.4</a></li>
+<li><a class="reference internal" href="#version-0-3-3">Version 0.3.3</a></li>
+<li><a class="reference internal" href="#version-0-3-2">Version 0.3.2</a></li>
+<li><a class="reference internal" href="#version-0-3-1">Version 0.3.1</a></li>
+<li><a class="reference internal" href="#version-0-3-0">Version 0.3.0</a></li>
+</ul>
+</li>
+</ul>
+<h3>导航</h3>
+<ul>
+      <li>上一个主题: <a href="api.html" title="上一章">API</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+
+    
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2019, offu.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+    
+
+  </body>
+</html>

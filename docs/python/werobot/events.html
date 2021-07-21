@@ -1,0 +1,1129 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Event &#8212; WeRoBot 1.13.1 文档</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="回复" href="replies.html" />
+    <link rel="prev" title="Message" href="messages.html" />
+     
+    
+        <link rel="apple-touch-icon" href="_static/logo.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head><body>
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="replies.html" title="回复"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="messages.html" title="Message"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">WeRoBot 1.13.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Event</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="event">
+<h1>Event<a class="headerlink" href="#event" title="永久链接至标题">¶</a></h1>
+<section id="id1">
+<h2>Event 公共属性<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>除了 UnknownEvent, 每一种 Event 都包括以下属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>message_id</p></td>
+<td><p>消息id</p></td>
+</tr>
+<tr class="row-odd"><td><p>target</p></td>
+<td><p>开发者账号（ OpenID ）</p></td>
+</tr>
+<tr class="row-even"><td><p>source</p></td>
+<td><p>发送方账号（ OpenID ）</p></td>
+</tr>
+<tr class="row-odd"><td><p>time</p></td>
+<td><p>信息发送的时间，一个UNIX时间戳</p></td>
+</tr>
+<tr class="row-even"><td><p>raw</p></td>
+<td><p>信息的原始 XML 格式</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="subscribeevent">
+<h2>SubscribeEvent<a class="headerlink" href="#subscribeevent" title="永久链接至标题">¶</a></h2>
+<p>SubscribeEvent 的属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘subscribe_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>key</p></td>
+<td><p>事件 key 值。 当且仅当未关注公众号扫描二维码时存在</p></td>
+</tr>
+<tr class="row-even"><td><p>ticket</p></td>
+<td><p>二维码的 ticket。 当且仅当未关注公众号扫描二维码时存在</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="unsubscribeevent">
+<h2>UnSubscribeEvent<a class="headerlink" href="#unsubscribeevent" title="永久链接至标题">¶</a></h2>
+<p>UnSubscribeEvent 的属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 81%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘unsubscribe_event’</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="scanevent">
+<h2>ScanEvent<a class="headerlink" href="#scanevent" title="永久链接至标题">¶</a></h2>
+<p>ScanEvent 的属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘scan_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>key</p></td>
+<td><p>事件KEY值，是一个32位无符号整数，即创建二维码时的二维码 scene_id</p></td>
+</tr>
+<tr class="row-even"><td><p>ticket</p></td>
+<td><p>二维码的 ticket，可用来换取二维码图片</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="scancodepushevent">
+<h2>ScanCodePushEvent<a class="headerlink" href="#scancodepushevent" title="永久链接至标题">¶</a></h2>
+<p>ScanCodePushEvent 的属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘scancode_push_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>scan_type</p></td>
+<td><p>扫描类型，一般是qrcode</p></td>
+</tr>
+<tr class="row-even"><td><p>scan_result</p></td>
+<td><p>扫描结果，即二维码对应的字符串信息</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="scancodewaitmsgevent">
+<h2>ScanCodeWaitMsgEvent<a class="headerlink" href="#scancodewaitmsgevent" title="永久链接至标题">¶</a></h2>
+<p>ScanCodeWaitMsgEvent 的属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘scancode_waitmsg_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>scan_type</p></td>
+<td><p>扫描类型，一般是qrcode</p></td>
+</tr>
+<tr class="row-even"><td><p>scan_result</p></td>
+<td><p>扫描结果，即二维码对应的字符串信息</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="picsysphotoevent">
+<h2>PicSysphotoEvent<a class="headerlink" href="#picsysphotoevent" title="永久链接至标题">¶</a></h2>
+<p>弹出系统拍照发图的事件推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘pic_sysphoto_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>key</p></td>
+<td><p>事件KEY值，由开发者在创建菜单时设定</p></td>
+</tr>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>发送的图片数量</p></td>
+</tr>
+<tr class="row-odd"><td><p>pic_list</p></td>
+<td><p>图片列表，例如 [{‘pic_md5_sum’: ‘123’}]</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="picphotooralbumevent">
+<h2>PicPhotoOrAlbumEvent<a class="headerlink" href="#picphotooralbumevent" title="永久链接至标题">¶</a></h2>
+<p>弹出拍照或者相册发图的事件推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘pic_photo_or_album_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>key</p></td>
+<td><p>事件KEY值，由开发者在创建菜单时设定</p></td>
+</tr>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>发送的图片数量</p></td>
+</tr>
+<tr class="row-odd"><td><p>pic_list</p></td>
+<td><p>图片列表，例如 [{‘pic_md5_sum’: ‘123’}]</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="picweixinevent">
+<h2>PicWeixinEvent<a class="headerlink" href="#picweixinevent" title="永久链接至标题">¶</a></h2>
+<p>弹出微信相册发图器的事件推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘pic_weixin_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>key</p></td>
+<td><p>事件KEY值，由开发者在创建菜单时设定</p></td>
+</tr>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>发送的图片数量</p></td>
+</tr>
+<tr class="row-odd"><td><p>pic_list</p></td>
+<td><p>图片列表，例如 [{‘pic_md5_sum’: ‘123’}]</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="locationselectevent">
+<h2>LocationSelectEvent<a class="headerlink" href="#locationselectevent" title="永久链接至标题">¶</a></h2>
+<p>弹出地理位置选择器的事件推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 81%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘location_select_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>key</p></td>
+<td><p>事件KEY值，由开发者在创建菜单时设定</p></td>
+</tr>
+<tr class="row-even"><td><p>location_x</p></td>
+<td><p>X坐标信息</p></td>
+</tr>
+<tr class="row-odd"><td><p>location_y</p></td>
+<td><p>Y坐标信息</p></td>
+</tr>
+<tr class="row-even"><td><p>scale</p></td>
+<td><p>精度，可理解为精度或者比例尺、越精细的话 scale 越高</p></td>
+</tr>
+<tr class="row-odd"><td><p>label</p></td>
+<td><p>地理位置的字符串信息</p></td>
+</tr>
+<tr class="row-even"><td><p>poi_name</p></td>
+<td><p>朋友圈POI的名字，可能为 None</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="clickevent">
+<h2>ClickEvent<a class="headerlink" href="#clickevent" title="永久链接至标题">¶</a></h2>
+<p>ClickEvent 的属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 81%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘click_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>key</p></td>
+<td><p>事件 key 值。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="viewevent">
+<h2>ViewEvent<a class="headerlink" href="#viewevent" title="永久链接至标题">¶</a></h2>
+<p>ViewEvent 的属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 81%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘view_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>key</p></td>
+<td><p>事件 key 值。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="locationevent">
+<h2>LocationEvent<a class="headerlink" href="#locationevent" title="永久链接至标题">¶</a></h2>
+<p>LocationEvent 的属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘location_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>latitude</p></td>
+<td><p>地理位置纬度</p></td>
+</tr>
+<tr class="row-even"><td><p>longitude</p></td>
+<td><p>地理位置经度</p></td>
+</tr>
+<tr class="row-odd"><td><p>precision</p></td>
+<td><p>地理位置精度</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="templatesendjobfinishevent">
+<h2>TemplateSendJobFinishEvent<a class="headerlink" href="#templatesendjobfinishevent" title="永久链接至标题">¶</a></h2>
+<p>模版消息发送任务完成后的 Event 通知。 属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>status</p></td>
+<td><p>发送是否成功。为 ‘success’ 或失败原因</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="userscanproductevent">
+<h2>UserScanProductEvent<a class="headerlink" href="#userscanproductevent" title="永久链接至标题">¶</a></h2>
+<p>打开商品主页事件推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘user_scan_product_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>key_standard</p></td>
+<td><p>商品编码标准。</p></td>
+</tr>
+<tr class="row-even"><td><p>key_str</p></td>
+<td><p>商品编码内容。</p></td>
+</tr>
+<tr class="row-odd"><td><p>country</p></td>
+<td><p>用户在微信内设置的国家。</p></td>
+</tr>
+<tr class="row-even"><td><p>province</p></td>
+<td><p>用户在微信内设置的省份。</p></td>
+</tr>
+<tr class="row-odd"><td><p>city</p></td>
+<td><p>用户在微信内设置的城市。</p></td>
+</tr>
+<tr class="row-even"><td><p>sex</p></td>
+<td><p>用户的性别，1为男性，2为女性，0代表未知。</p></td>
+</tr>
+<tr class="row-odd"><td><p>scene</p></td>
+<td><p>打开商品主页的场景，1为扫码，2为其他打开场景（如会话、收藏或朋友圈）。</p></td>
+</tr>
+<tr class="row-even"><td><p>ext_info</p></td>
+<td><p>调用“获取商品二维码接口”时传入的 extinfo，为标识参数。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="userscanproductentersessionevent">
+<h2>UserScanProductEnterSessionEvent<a class="headerlink" href="#userscanproductentersessionevent" title="永久链接至标题">¶</a></h2>
+<p>当用户从商品主页进入公众号会话时推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘user_scan_product_enter_session_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>key_standard</p></td>
+<td><p>商品编码标准。</p></td>
+</tr>
+<tr class="row-even"><td><p>key_str</p></td>
+<td><p>商品编码内容。</p></td>
+</tr>
+<tr class="row-odd"><td><p>ext_info</p></td>
+<td><p>调用“获取商品二维码接口”时传入的 extinfo，为标识参数。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="userscanproductasyncevent">
+<h2>UserScanProductAsyncEvent<a class="headerlink" href="#userscanproductasyncevent" title="永久链接至标题">¶</a></h2>
+<p>当用户打开商品主页，微信会将该用户实时的地理位置信息以异步事件的形式推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 92%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘user_scan_product_async_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>key_standard</p></td>
+<td><p>商品编码标准。</p></td>
+</tr>
+<tr class="row-even"><td><p>key_str</p></td>
+<td><p>商品编码内容。</p></td>
+</tr>
+<tr class="row-odd"><td><p>ext_info</p></td>
+<td><p>调用“获取商品二维码接口”时传入的 extinfo，为标识参数。</p></td>
+</tr>
+<tr class="row-even"><td><p>region_code</p></td>
+<td><p>用户的实时地理位置信息（目前只精确到省一级），可在国家统计局网站查到对应明细： <a class="reference external" href="http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/201504/t20150415_712722.html">http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/201504/t20150415_712722.html</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="userscanproductverifyactionevent">
+<h2>UserScanProductVerifyActionEvent<a class="headerlink" href="#userscanproductverifyactionevent" title="永久链接至标题">¶</a></h2>
+<p>提交审核的商品，完成审核后，微信会将审核结果以事件的形式推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘user_scan_product_verify_action_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>key_standard</p></td>
+<td><p>商品编码标准。</p></td>
+</tr>
+<tr class="row-even"><td><p>key_str</p></td>
+<td><p>商品编码内容。</p></td>
+</tr>
+<tr class="row-odd"><td><p>result</p></td>
+<td><p>审核结果。verify_ok表示审核通过，verify_not_pass表示审核未通过。</p></td>
+</tr>
+<tr class="row-even"><td><p>reason_msg</p></td>
+<td><p>审核未通过的原因。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cardpasscheckevent">
+<h2>CardPassCheckEvent<a class="headerlink" href="#cardpasscheckevent" title="永久链接至标题">¶</a></h2>
+<p>生成的卡券通过审核时，微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘card_pass_check_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>refuse_reason</p></td>
+<td><p>审核不通过原因。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cardnotpasscheckevent">
+<h2>CardNotPassCheckEvent<a class="headerlink" href="#cardnotpasscheckevent" title="永久链接至标题">¶</a></h2>
+<p>生成的卡券未通过审核时，微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘card_not_pass_check_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>refuse_reason</p></td>
+<td><p>审核不通过原因。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="usergetcardevent">
+<h2>UserGetCardEvent<a class="headerlink" href="#usergetcardevent" title="永久链接至标题">¶</a></h2>
+<p>用户在领取卡券时，微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘user_get_card_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>user_card_code</p></td>
+<td><p>code 序列号。</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_give_by_friend</p></td>
+<td><p>是否为转赠领取，1 代表是，0 代表否。</p></td>
+</tr>
+<tr class="row-even"><td><p>friend_user_name</p></td>
+<td><p>当 is_give_by_friend 为 1 时填入的字段，表示发起转赠用户的 openid。</p></td>
+</tr>
+<tr class="row-odd"><td><p>outer_id</p></td>
+<td><p>未知。</p></td>
+</tr>
+<tr class="row-even"><td><p>old_user_card_code</p></td>
+<td><p>为保证安全，微信会在转赠发生后变更该卡券的 code 号，该字段表示转赠前的 code。</p></td>
+</tr>
+<tr class="row-odd"><td><p>outer_str</p></td>
+<td><p>领取场景值，用于领取渠道数据统计。可在生成二维码接口及添加 Addcard 接口中自定义该字段的字符串值。</p></td>
+</tr>
+<tr class="row-even"><td><p>is_restore_member_card</p></td>
+<td><p>用户删除会员卡后可重新找回，当用户本次操作为找回时，该值为 1，否则为 0。</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_recommend_by_friend</p></td>
+<td><p>未知。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="usergiftingcardevent">
+<h2>UserGiftingCardEvent<a class="headerlink" href="#usergiftingcardevent" title="永久链接至标题">¶</a></h2>
+<p>用户在转赠卡券时，微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘user_gifting_card_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>user_card_code</p></td>
+<td><p>code 序列号。</p></td>
+</tr>
+<tr class="row-odd"><td><p>friend_user_name</p></td>
+<td><p>接收卡券用户的openid。</p></td>
+</tr>
+<tr class="row-even"><td><p>is_return_back</p></td>
+<td><p>是否转赠退回，0 代表不是，1 代表是。</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_chat_room</p></td>
+<td><p>是否是群转赠。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="userdelcardevent">
+<h2>UserDelCardEvent<a class="headerlink" href="#userdelcardevent" title="永久链接至标题">¶</a></h2>
+<p>用户在删除卡券时，微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘user_del_card_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>user_card_code</p></td>
+<td><p>code 序列号。自定义 code 及非自定义 code 的卡券被领取后都支持事件推送。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="userconsumecardevent">
+<h2>UserConsumeCardEvent<a class="headerlink" href="#userconsumecardevent" title="永久链接至标题">¶</a></h2>
+<p>卡券被核销时，微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘user_consume_card_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>user_card_code</p></td>
+<td><p>code 序列号。</p></td>
+</tr>
+<tr class="row-odd"><td><p>consume_source</p></td>
+<td><p>核销来源。</p></td>
+</tr>
+<tr class="row-even"><td><p>location_name</p></td>
+<td><p>门店名称，当前卡券核销的门店名称（只有通过自助核销和买单核销时才会出现该字段）。</p></td>
+</tr>
+<tr class="row-odd"><td><p>staff_open_id</p></td>
+<td><p>核销该卡券核销员的 openid（只有通过卡券商户助手核销时才会出现）。</p></td>
+</tr>
+<tr class="row-even"><td><p>verify_code</p></td>
+<td><p>自助核销时，用户输入的验证码。</p></td>
+</tr>
+<tr class="row-odd"><td><p>remark_amount</p></td>
+<td><p>自助核销时 ，用户输入的备注金额。</p></td>
+</tr>
+<tr class="row-even"><td><p>outer_str</p></td>
+<td><p>开发者发起核销时传入的自定义参数，用于进行核销渠道统计。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="userpayfrompaycellevent">
+<h2>UserPayFromPayCellEvent<a class="headerlink" href="#userpayfrompaycellevent" title="永久链接至标题">¶</a></h2>
+<p>用户微信买单完成时，微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘user_pay_from_pay_cell_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>user_card_code</p></td>
+<td><p>code 序列号。</p></td>
+</tr>
+<tr class="row-odd"><td><p>trans_id</p></td>
+<td><p>微信支付交易订单号（只有使用买单功能核销的卡券才会出现）。</p></td>
+</tr>
+<tr class="row-even"><td><p>location_id</p></td>
+<td><p>门店 ID，当前卡券核销的门店 ID（只有通过卡券商户助手和买单核销时才会出现）。</p></td>
+</tr>
+<tr class="row-odd"><td><p>fee</p></td>
+<td><p>实付金额，单位为分。</p></td>
+</tr>
+<tr class="row-even"><td><p>original_fee</p></td>
+<td><p>应付金额，单位为分。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="userviewcardevent">
+<h2>UserViewCardEvent<a class="headerlink" href="#userviewcardevent" title="永久链接至标题">¶</a></h2>
+<p>用户在进入会员卡时，微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘user_view_card_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>user_card_code</p></td>
+<td><p>code 序列号。</p></td>
+</tr>
+<tr class="row-odd"><td><p>outer_str</p></td>
+<td><p>商户自定义二维码渠道参数，用于标识本次扫码打开会员卡来源来自于某个渠道值的二维码。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="userentersessionfromcardevent">
+<h2>UserEnterSessionFromCardEvent<a class="headerlink" href="#userentersessionfromcardevent" title="永久链接至标题">¶</a></h2>
+<p>用户在卡券里点击查看公众号进入会话时（需要用户已经关注公众号），微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘user_enter_session_from_card_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>user_card_code</p></td>
+<td><p>code 序列号。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="updatemembercardevent">
+<h2>UpdateMemberCardEvent<a class="headerlink" href="#updatemembercardevent" title="永久链接至标题">¶</a></h2>
+<p>用户的会员卡积分余额发生变动时，微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘update_member_card_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>user_card_code</p></td>
+<td><p>code 序列号。</p></td>
+</tr>
+<tr class="row-odd"><td><p>modify_bonus</p></td>
+<td><p>变动的积分值。</p></td>
+</tr>
+<tr class="row-even"><td><p>modify_balance</p></td>
+<td><p>变动的余额值。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cardskuremindevent">
+<h2>CardSkuRemindEvent<a class="headerlink" href="#cardskuremindevent" title="永久链接至标题">¶</a></h2>
+<p>当某个card_id的初始库存数大于200且当前库存小于等于100时，用户尝试领券，微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘card_sku_remind_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>detail</p></td>
+<td><p>报警详细信息。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cardpayorderevent">
+<h2>CardPayOrderEvent<a class="headerlink" href="#cardpayorderevent" title="永久链接至标题">¶</a></h2>
+<p>用户的会员卡积分余额发生变动时，微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘card_pay_order_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>user_card_code</p></td>
+<td><p>code 序列号。</p></td>
+</tr>
+<tr class="row-odd"><td><p>order_id</p></td>
+<td><p>本次推送对应的订单号。</p></td>
+</tr>
+<tr class="row-even"><td><p>status</p></td>
+<td><p>本次订单号的状态。</p></td>
+</tr>
+<tr class="row-odd"><td><p>create_order_time</p></td>
+<td><p>购买券点时，支付二维码的生成时间。</p></td>
+</tr>
+<tr class="row-even"><td><p>pay_finish_time</p></td>
+<td><p>购买券点时，实际支付成功的时间。</p></td>
+</tr>
+<tr class="row-odd"><td><p>desc</p></td>
+<td><p>支付方式，一般为微信支付充值。</p></td>
+</tr>
+<tr class="row-even"><td><p>free_coin_count</p></td>
+<td><p>剩余免费券点数量。</p></td>
+</tr>
+<tr class="row-odd"><td><p>pay_coin_count</p></td>
+<td><p>剩余付费券点数量。</p></td>
+</tr>
+<tr class="row-even"><td><p>refund_free_coin_count</p></td>
+<td><p>本次变动的免费券点数量。</p></td>
+</tr>
+<tr class="row-odd"><td><p>refund_pay_coin_count</p></td>
+<td><p>本次变动的付费券点数量</p></td>
+</tr>
+<tr class="row-even"><td><p>order_type</p></td>
+<td><p>所要拉取的订单类型。</p></td>
+</tr>
+<tr class="row-odd"><td><p>memo</p></td>
+<td><p>系统备注，说明此次变动的缘由，如开通账户奖励、门店奖励、核销奖励以及充值、扣减。</p></td>
+</tr>
+<tr class="row-even"><td><p>receipt_info</p></td>
+<td><p>所开发票的详情。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="submitmembercarduserinfoevent">
+<h2>SubmitMembercardUserInfoEvent<a class="headerlink" href="#submitmembercarduserinfoevent" title="永久链接至标题">¶</a></h2>
+<p>用户通过一键激活的方式提交信息并点击激活或者用户修改会员卡信息时，微信推送的 Event。属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘submit_membercard_user_info_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>card_id</p></td>
+<td><p>卡券 ID。</p></td>
+</tr>
+<tr class="row-even"><td><p>user_card_code</p></td>
+<td><p>code 序列号。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="unknownevent">
+<h2>UnknownEvent<a class="headerlink" href="#unknownevent" title="永久链接至标题">¶</a></h2>
+<p>UnknownEvent 的属性:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>‘unknown_event’</p></td>
+</tr>
+<tr class="row-odd"><td><p>raw</p></td>
+<td><p>请求的正文部分。标准的XML格式。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>如果你不为 WeRoBot 贡献代码，你完全可以无视掉 UnknownEvent 。在正常的使用中，WeRoBot应该不会收到 <cite>UnknownEvent</cite> ——除非 WeRoBot 停止开发。</p>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <h3><a href="index.html">WeRoBot</a></h3>
+    <a href="http://github.com/offu/WeRoBot" class="sidebar-github-link">
+        <img src="https://img.shields.io/github/stars/offu/WeRoBot.svg?style=social&label=Star&maxAge=2592000" />
+        <img src="https://img.shields.io/github/forks/offu/WeRoBot.svg?style=social&label=Fork&maxAge=2592000" />
+    </a>
+
+    <h3>遇到问题了？</h3>
+    <p>
+        如果你遇到了问题，请去 <a href="https://github.com/whtsky/WeRoBot/issues/new">发 Issue</a>。
+    </p>
+
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Event</a><ul>
+<li><a class="reference internal" href="#id1">Event 公共属性</a></li>
+<li><a class="reference internal" href="#subscribeevent">SubscribeEvent</a></li>
+<li><a class="reference internal" href="#unsubscribeevent">UnSubscribeEvent</a></li>
+<li><a class="reference internal" href="#scanevent">ScanEvent</a></li>
+<li><a class="reference internal" href="#scancodepushevent">ScanCodePushEvent</a></li>
+<li><a class="reference internal" href="#scancodewaitmsgevent">ScanCodeWaitMsgEvent</a></li>
+<li><a class="reference internal" href="#picsysphotoevent">PicSysphotoEvent</a></li>
+<li><a class="reference internal" href="#picphotooralbumevent">PicPhotoOrAlbumEvent</a></li>
+<li><a class="reference internal" href="#picweixinevent">PicWeixinEvent</a></li>
+<li><a class="reference internal" href="#locationselectevent">LocationSelectEvent</a></li>
+<li><a class="reference internal" href="#clickevent">ClickEvent</a></li>
+<li><a class="reference internal" href="#viewevent">ViewEvent</a></li>
+<li><a class="reference internal" href="#locationevent">LocationEvent</a></li>
+<li><a class="reference internal" href="#templatesendjobfinishevent">TemplateSendJobFinishEvent</a></li>
+<li><a class="reference internal" href="#userscanproductevent">UserScanProductEvent</a></li>
+<li><a class="reference internal" href="#userscanproductentersessionevent">UserScanProductEnterSessionEvent</a></li>
+<li><a class="reference internal" href="#userscanproductasyncevent">UserScanProductAsyncEvent</a></li>
+<li><a class="reference internal" href="#userscanproductverifyactionevent">UserScanProductVerifyActionEvent</a></li>
+<li><a class="reference internal" href="#cardpasscheckevent">CardPassCheckEvent</a></li>
+<li><a class="reference internal" href="#cardnotpasscheckevent">CardNotPassCheckEvent</a></li>
+<li><a class="reference internal" href="#usergetcardevent">UserGetCardEvent</a></li>
+<li><a class="reference internal" href="#usergiftingcardevent">UserGiftingCardEvent</a></li>
+<li><a class="reference internal" href="#userdelcardevent">UserDelCardEvent</a></li>
+<li><a class="reference internal" href="#userconsumecardevent">UserConsumeCardEvent</a></li>
+<li><a class="reference internal" href="#userpayfrompaycellevent">UserPayFromPayCellEvent</a></li>
+<li><a class="reference internal" href="#userviewcardevent">UserViewCardEvent</a></li>
+<li><a class="reference internal" href="#userentersessionfromcardevent">UserEnterSessionFromCardEvent</a></li>
+<li><a class="reference internal" href="#updatemembercardevent">UpdateMemberCardEvent</a></li>
+<li><a class="reference internal" href="#cardskuremindevent">CardSkuRemindEvent</a></li>
+<li><a class="reference internal" href="#cardpayorderevent">CardPayOrderEvent</a></li>
+<li><a class="reference internal" href="#submitmembercarduserinfoevent">SubmitMembercardUserInfoEvent</a></li>
+<li><a class="reference internal" href="#unknownevent">UnknownEvent</a></li>
+</ul>
+</li>
+</ul>
+<h3>导航</h3>
+<ul>
+      <li>上一个主题: <a href="messages.html" title="上一章">Message</a></li>
+      <li>下一个主题: <a href="replies.html" title="下一章">回复</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    
+
+    
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2019, offu.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+    
+
+  </body>
+</html>
