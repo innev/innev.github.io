@@ -56,7 +56,12 @@ deactivate
 ### 4.3. [Sphinx](sphinx/index.md)
 > Sphinx是一个可以用于Python的自动文档生成工具，可以自动的把docstring转换为文档，并支持多种输出格式包括html，latex，pdf等。
 
-[打开`sphinx`文档](sphinx.md)
+[打开`sphinx`文档](sphinx/index.md)
+
+### 4.4. [APScheduler](scheduler/APScheduler.md)
+> APScheduler是一个 Python 定时任务框架，使用起来十分方便。提供了基于日期、固定时间间隔以及 crontab 类型的任务，并且可以持久化任务、并以 daemon 方式运行应用。
+
+[打开`APScheduler`文档](scheduler/APScheduler.md)
 
 ## 五、最佳项目实践
 
