@@ -129,7 +129,7 @@ APScheduler 四个组件分别为：`触发器(trigger)，作业存储(job store
 
 ### 触发器(trigger)
 -- --
-包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置意外，触发器完全是无状态的
+包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置以外，触发器完全是无状态的
 APScheduler 有三种内建的 trigger:
 
     date: 特定的时间点触发
@@ -138,12 +138,12 @@ APScheduler 有三种内建的 trigger:
 
 ### 作业存储(job store)
 -- --
-存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据讲在保存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。
+存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据将在保存到持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。
 APScheduler 默认使用 MemoryJobStore，可以修改使用 DB 存储方案
 
 ### 执行器(executor)
 -- --
-处理作业的运行，他们通常通过在作业中提交制定的可调用对象到一个线程或者进城池来进行。当作业完成时，执行器将会通知调度器。
+处理作业的运行，他们通常通过在作业中提交指定的可调用对象到一个线程或者进程池来进行。当作业完成时，执行器将会通知调度器。
 最常用的 executor 有两种：
 
     ProcessPoolExecutor
@@ -313,8 +313,8 @@ scheduler.add_listener(my_listener, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
 -- --
 
 最基本的一种调度，作业只会执行一次。它的参数如下：
-- run_date (datetime|str) – the date/time to run the job at
-- timezone (datetime.tzinfo|str) – time zone for run_date if it doesn’t have one already
+- run_date (`datetime|str`) – the date/time to run the job at
+- timezone (`datetime.tzinfo|str`) – time zone for run_date if it doesn’t have one already
 
 ```python
 from datetime import date
@@ -334,17 +334,17 @@ sched.start()
 ### [cron](https://apscheduler.readthedocs.io/en/latest/modules/triggers/cron.html)
 -- --
 
-- year (int|str) – 4-digit year
-- month (int|str) – month (1-12)
-- day (int|str) – day of the (1-31)
-- week (int|str) – ISO week (1-53)
-- day_of_week (int|str) – number or name of weekday (0-6 or mon,tue,wed,thu,fri,sat,sun)
-- hour (int|str) – hour (0-23)
-- minute (int|str) – minute (0-59)
-- second (int|str) – second (0-59)
-- start_date (datetime|str) – earliest possible date/time to trigger on (inclusive)
-- end_date (datetime|str) – latest possible date/time to trigger on (inclusive)
-- timezone (datetime.tzinfo|str) – time zone to use for the date/time calculations (defaults to scheduler timezone)
+- year (`int|str`) – 4-digit year
+- month (`int|str`) – month (1-12)
+- day (`int|str`) – day of the (1-31)
+- week (`int|str`) – ISO week (1-53)
+- day_of_week (`int|str`) – number or name of weekday (0-6 or mon,tue,wed,thu,fri,sat,sun)
+- hour (`int|str`) – hour (0-23)
+- minute (`int|str`) – minute (0-59)
+- second (`int|str`) – second (0-59)
+- start_date (`datetime|str`) – earliest possible date/time to trigger on (inclusive)
+- end_date (`datetime|str`) – latest possible date/time to trigger on (inclusive)
+- timezone (`datetime.tzinfo|str`) – time zone to use for the date/time calculations (defaults to scheduler timezone)
 
 
 **表达式:** 
@@ -370,14 +370,14 @@ sched.start()
 -- --
 
 参数：
-- weeks (int) – number of weeks to wait
-- days (int) – number of days to wait
-- hours (int) – number of hours to wait
-- minutes (int) – number of minutes to wait
-- seconds (int) – number of seconds to wait
-- start_date (datetime|str) – starting point for the interval calculation
-- end_date (datetime|str) – latest possible date/time to trigger on
-- timezone (datetime.tzinfo|str) – time zone to use for the date/time calculations
+- weeks (`int`) – number of weeks to wait
+- days (`int`) – number of days to wait
+- hours (`int`) – number of hours to wait
+- minutes (`int`) – number of minutes to wait
+- seconds (`int`) – number of seconds to wait
+- start_date (`datetime|str`) – starting point for the interval calculation
+- end_date (`datetime|str`) – latest possible date/time to trigger on
+- timezone (`datetime.tzinfo|str`) – time zone to use for the date/time calculations
 
 ```python
 from datetime import datetime
