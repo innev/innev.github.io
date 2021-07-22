@@ -4,12 +4,14 @@
 ## 一、基础语法学习
 
 ### 1.1. 语法特点（区别于其他主流语言）
+
 - 使用`def`来定义方法
 - 没有使用`{}`作为代码快的隔离，而是使用`:`作为代码块开始，然后使用`空格`作为代码换行缩紧
 - 函数的参数支持多种类型：必须参数、默认参数、可变参数（不定长参数）、关键字参数、组合参数。用法非常灵活
 
 ### 1.2. 特有变量类型
 > list和tuple都有非常强大的切片，分割等功能，会在具体实例中展示
+
 - 元组(tuple)，以`(<item>, <item>, ...)`的形式出现
 - 列表(list)，以`[<item>, <item>, ...]`的形式出现。类似js中的数组和PHP中的索引数组
 - 字典（dict），以`{<item>, <item>, ...}`的形式出现。类似js中的Object和PHP中的关联数组
@@ -51,17 +53,11 @@ deactivate
 ### 4.2. [WeRoBot](werobot/index.html)
 > WeRoBot 是一个微信公众号开发框架。
 
-[打开`WeRoBot`文档](werobot/index.html)
-
 ### 4.3. [Sphinx](sphinx/index.md)
 > Sphinx是一个可以用于Python的自动文档生成工具，可以自动的把docstring转换为文档，并支持多种输出格式包括html，latex，pdf等。
 
-[打开`sphinx`文档](sphinx/index.md)
-
 ### 4.4. [APScheduler](scheduler/APScheduler.md)
 > APScheduler是一个 Python 定时任务框架，使用起来十分方便。提供了基于日期、固定时间间隔以及 crontab 类型的任务，并且可以持久化任务、并以 daemon 方式运行应用。
-
-[打开`APScheduler`文档](scheduler/APScheduler.md)
 
 ## 五、最佳项目实践
 
