@@ -59,6 +59,9 @@ deactivate
 ### 4.4. [APScheduler](scheduler/APScheduler.md)
 > APScheduler是一个 Python 定时任务框架，使用起来十分方便。提供了基于日期、固定时间间隔以及 crontab 类型的任务，并且可以持久化任务、并以 daemon 方式运行应用。
 
+### 4.5. [matplotlib](matplotlib/index.md)
+> Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.
+
 ## 五、最佳项目实践
 
 ### 5.1. [自定义帮助包](pages/helper.md)
@@ -70,3 +73,7 @@ deactivate
 ### 5.4. [文件或图片上传](pages/upload.md)
 
 ### 5.5. list切片操作
+
+### 5.6. [创建守护进程](fork_service/index.md)
+
+### 5.7. 服务器变成
