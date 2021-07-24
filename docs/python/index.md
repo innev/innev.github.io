@@ -50,16 +50,19 @@ deactivate
 ### 4.1. pandas
 > pandas是一个强大的数据处理包，可以横向、纵向操作数据。方便的切片、分割、过滤、排序、导入、导出等数据操作
 
-### 4.2. [WeRoBot](werobot/index.html)
+### 4.2. [logging](logging/index.md)
+> logging是一个日志框架，方便输出日志到控制台或文件
+
+### 4.3. [WeRoBot](werobot/index.html)
 > WeRoBot 是一个微信公众号开发框架。
 
-### 4.3. [Sphinx](sphinx/index.md)
+### 4.4. [Sphinx](sphinx/index.md)
 > Sphinx是一个可以用于Python的自动文档生成工具，可以自动的把docstring转换为文档，并支持多种输出格式包括html，latex，pdf等。
 
-### 4.4. [APScheduler](scheduler/APScheduler.md)
+### 4.5. [APScheduler](scheduler/APScheduler.md)
 > APScheduler是一个 Python 定时任务框架，使用起来十分方便。提供了基于日期、固定时间间隔以及 crontab 类型的任务，并且可以持久化任务、并以 daemon 方式运行应用。
 
-### 4.5. [matplotlib](matplotlib/index.md)
+### 4.6. [matplotlib](matplotlib/index.md)
 > Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.
 
 ## 五、最佳项目实践
@@ -76,4 +79,4 @@ deactivate
 
 ### 5.6. [创建守护进程](fork_service/index.md)
 
-### 5.7. 服务器变成
+### 5.7. 服务器编程
