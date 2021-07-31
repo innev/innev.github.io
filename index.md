@@ -1,6 +1,6 @@
 # Innev
 
-[[TOC]]
+[TOC]
 
 ## Docs
 - [python](docs/python/index.md)
