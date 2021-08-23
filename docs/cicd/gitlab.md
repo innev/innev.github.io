@@ -204,3 +204,5 @@ deploy_prod:
 
 - 如果要为单一project注册Runner，则需要从`<Project>->Settings->CI/CD->Runners`中获取`URL`和`token`
 - 如果要为代码组注册Runner，则需要从`<Group>->Settings->CI/CD->Runners`中获取`URL`和`token`
+
+![Group Runners](images/runners2.jpg)
